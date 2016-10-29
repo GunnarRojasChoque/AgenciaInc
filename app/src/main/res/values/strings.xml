@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AgenciaInc</string>
     <string name="primer_dia_sprint">primer dia sprint</string>
+    <string name="toyota">Toyota</string>
+    <string name="modelo_w450">Modelo w450</string>
+    <string name="ejemplodecatalogo">EjemploDeCatalogo</string>
 </resources>
