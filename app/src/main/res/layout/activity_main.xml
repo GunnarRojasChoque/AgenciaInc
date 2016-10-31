@@ -10,46 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.gunnar.agenciainc.MainActivity">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/catalogoEx"
-        android:layout_width="match_parent"
-        android:layout_height="150dp">
+    <TextView
+        android:id="@+id/TextView"
+        android:text="@string/primer_dia_sprint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:id="@+id/liner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <ImageView
-                android:contentDescription="@string/ejemplodecatalogo"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/car" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/toyota"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/modelo_w450"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
 </RelativeLayout>
