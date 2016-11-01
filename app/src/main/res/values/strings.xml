@@ -4,4 +4,12 @@
     <string name="toyota">Toyota</string>
     <string name="modelo_w450">Modelo w450</string>
     <string name="ejemplodecatalogo">EjemploDeCatalogo</string>
+    <string name="modelo">Modelo</string>
+    <string name="marca">Marca</string>
+    <string name="chasis">Chasis</string>
+    <string name="a_o">Año</string>
+    <string name="precio">Precio</string>
+    <string name="fecha_de_ingreso">Fecha de ingreso</string>
+    <string name="registrar">Registrar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
