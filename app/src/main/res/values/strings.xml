@@ -8,8 +8,10 @@
     <string name="marca">Marca</string>
     <string name="chasis">Chasis</string>
     <string name="a_o">Año</string>
-    <string name="precio">Precio</string>
+    <string name="precio" translatable="false">Precio</string>
     <string name="fecha_de_ingreso">Fecha de ingreso</string>
     <string name="registrar">Registrar</string>
     <string name="cancelar">Cancelar</string>
+    <string name="nom">Prueba</string>
+    <string name="registro_de_vehiculo">Registro de Vehiculo</string>
 </resources>

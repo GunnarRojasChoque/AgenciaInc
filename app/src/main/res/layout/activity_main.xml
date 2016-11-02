@@ -16,6 +16,15 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.example.gunnar.agenciainc.MainActivity">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_marginBottom="12dp"
+            android:text="@string/registro_de_vehiculo"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
         <EditText
             android:id="@+id/modelo"
             android:layout_width="match_parent"
@@ -42,18 +51,23 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/fecha_de_ingreso"
-            android:inputType="date" />
-
-        <EditText
             android:id="@+id/precio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/precio"
             android:inputType="number" />
+
+        <Button
+            android:id="@+id/date"
+            style="?android:buttonBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fecha_de_ingreso" />
+
+        <TextView
+            android:id="@+id/dateNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,18 +76,20 @@
             android:orientation="horizontal">
 
             <Button
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/Cancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancelar" />
+
+            <Button
+                android:backgroundTint="@color/colorAccent"
+                android:textColor="@android:color/white"
                 android:id="@+id/registrar"
-                style="?android:buttonBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/registrar" />
 
-            <Button
-                android:id="@+id/Cancelar"
-                style="?android:buttonBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cancelar" />
         </LinearLayout>
     </LinearLayout>
 
