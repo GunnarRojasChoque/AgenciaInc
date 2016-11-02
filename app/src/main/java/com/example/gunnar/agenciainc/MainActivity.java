@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -29,6 +31,98 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getName();
 
+
+
+/*
+    ////////////##################################
+    public static EditText nombresCli;
+    public static EditText apellidosCli;
+    public static EditText ciCli;
+    public static Button fechaCli;
+    public static EditText correoCli;
+    public static EditText celularCli;
+    public static RadioButton generoMasCli;
+    public static RadioButton generoFemCli;
+    public static Button registrarCli;
+    public static Button cancelarCli;
+    public static RadioGroup grupogenero;
+    //public static TextView fechaNacCli;
+
+    public static RadioButton rb;
+
+
+
+    private void initRegistrtoCli(){
+
+        nombresCli=(EditText)findViewById(R.id.etnombres);
+        apellidosCli=(EditText)findViewById(R.id.etapellidos);
+        ciCli=(EditText)findViewById(R.id.etci);
+        fechaCli=(Button) findViewById(R.id.btnnacimiento);
+        correoCli=(EditText)findViewById(R.id.etcorreo);
+        celularCli=(EditText)findViewById(R.id.etcelular);
+        generoMasCli=(RadioButton) findViewById(R.id.rbtnmasculino);
+        generoFemCli=(RadioButton)findViewById(R.id.rbtnfemenino);
+        registrarCli=(Button)findViewById(R.id.btnregistrar);
+        cancelarCli=(Button)findViewById(R.id.btncancelar);
+        grupogenero=(RadioGroup)findViewById(R.id.rbtngenero);
+        fechaNow=(TextView)findViewById(R.id.tvfecha);
+
+
+
+        fechaNow.setText(year + "/" + month + "/" + day);
+
+        fechaCli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(id_dialog);
+            }
+        });
+
+        fechaCli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(id_dialog);
+            }
+        });
+
+        int IDgenero=grupogenero.getCheckedRadioButtonId();
+        rb=(RadioButton)findViewById(IDgenero);
+
+
+
+        registrarCli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cliente client=new Cliente(nombresCli.getText().toString(),apellidosCli.getText().toString(),
+                        Integer.valueOf(celularCli.getText().toString()),Integer.valueOf(ciCli.getText().toString()),
+                        fechaCli.getText().toString(),correoCli.getText().toString(),rb.getText().toString());
+
+
+            }
+        });
+
+
+        cancelarCli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nombresCli.setText("");
+                apellidosCli.setText("");
+                ciCli.setText("");
+                fechaCli.setText("");
+                correoCli.setText("");
+                celularCli.setText("");
+
+            }
+        });
+
+    }
+
+
+
+/////////////######################3
+
+*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +132,10 @@ public class MainActivity extends AppCompatActivity {
         initRegistro();
 
     }
+
+
+
+
 
     private void initCalendar() {
         final Calendar calendar = Calendar.getInstance();
