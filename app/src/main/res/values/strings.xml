@@ -22,5 +22,6 @@
     <string name="ci">Ci</string>
     <string name="fechaNac">FechaNac</string>
     <string name="correo">Correo</string>
+
     <string name="genero">Genero</string>
 </resources>
