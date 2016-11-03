@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         context = this;
+
         initView();
     }
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         registroV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, Main.class);
+                Intent intent = new Intent(context, MainVehiculo.class);
                 startActivity(intent);
             }
         });
@@ -44,6 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
+
 }

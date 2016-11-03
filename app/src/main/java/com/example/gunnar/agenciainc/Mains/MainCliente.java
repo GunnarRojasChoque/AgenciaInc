@@ -64,10 +64,10 @@ public class MainCliente extends AppCompatActivity {
         registrarCli = (Button) findViewById(R.id.btnregistrar);
         cancelarCli = (Button) findViewById(R.id.btncancelar);
         grupogenero = (RadioGroup) findViewById(R.id.rbtngenero);
-        Main.fechaNow = (TextView) findViewById(R.id.tvfecha);
+        MainVehiculo.fechaNow = (TextView) findViewById(R.id.tvfecha);
 
 
-        Main.fechaNow.setText(year + "/" + month + "/" + day);
+        MainVehiculo.fechaNow.setText(year + "/" + month + "/" + day);
 
         fechaCli.setOnClickListener(new View.OnClickListener() {
             @Override
