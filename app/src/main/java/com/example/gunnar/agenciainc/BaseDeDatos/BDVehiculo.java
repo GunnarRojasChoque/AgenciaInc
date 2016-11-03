@@ -28,7 +28,7 @@ public class BDVehiculo extends SQLiteOpenHelper {
 
     //Setencia SQL para crear la base de datos
     private static final String DATABASE_CREATE = "CREATE TABLE "
-            + TABLE_VEHICULO_IMPORTADORA + " (" + COLUMN_ID + " SERIAL PRIMARY KEY, "
+            + TABLE_VEHICULO_IMPORTADORA + " (" + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_MODELO + " TEXT NOT NULL, "
             + COLUMN_MARCA + " TEXT NOT NULL, "
             + COLUMN_CHASIS + " TEXT NOT NULL, "
