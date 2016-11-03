@@ -54,7 +54,7 @@ public abstract class Validador extends Context {
 
             System.out.println("error");
             //JOptionPane.showMessageDialog(null, "¡error!");
-            AlertDialog alerta = new AlertDialog.Builder(this).create();
+            final AlertDialog alerta = new AlertDialog.Builder(this).create();
             alerta.setTitle("Alert");
 
             alerta.setMessage("nombre invalido");
@@ -62,9 +62,8 @@ public abstract class Validador extends Context {
             alerta.setButton("OK", new DialogInterface.OnClickListener() {
 
                 public void onClick(DialogInterface dialog, int which) {
-
+                    alerta.dismiss();
                     return;
-
                 }
             });
 

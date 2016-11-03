@@ -14,47 +14,88 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.example.gunnar.agenciainc.MainActivity">
+        tools:context="com.example.gunnar.agenciainc.Mains.MainActivity">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
             android:layout_marginBottom="12dp"
+            android:fontFamily="sans-serif-condensed"
             android:text="@string/registro_de_vehiculo"
+            android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/modelo"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/modelo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/modelo" />
+            android:hint="@string/modelo_w450" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/marca"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/marca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/marca" />
+            android:hint="@string/toyota" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/chasis"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/chasis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/chasis" />
+            android:hint="@string/lfe231" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/a_o"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/anio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/a_o"
+            android:hint="@string/_2016"
             android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/precio"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/precio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/precio"
+            android:hint="@string/_453213"
             android:inputType="number" />
 
         <Button
@@ -72,23 +113,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:gravity="end"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <Button
-                android:textColor="@android:color/darker_gray"
                 android:id="@+id/Cancelar"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/cancelar" />
+                android:layout_weight="1"
+                android:text="@string/cancelar"
+                android:textColor="@android:color/darker_gray" />
 
             <Button
-                android:backgroundTint="@color/colorAccent"
-                android:textColor="@android:color/white"
                 android:id="@+id/registrar"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/registrar" />
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/registrar"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
     </LinearLayout>

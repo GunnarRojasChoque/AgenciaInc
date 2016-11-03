@@ -19,4 +19,22 @@
     <string name="nombre">Nombre</string>
     <string name="sexo">Sexo</string>
     <string name="telefono">Telefono</string>
+    <string name="bienvenido_al_registro_de_cliente">BIENVENIDO AL REGISTRO DE CLIENTE</string>
+    <string name="nombres">NOMBRES</string>
+    <string name="pedro_paco">Pedro Paco</string>
+    <string name="apellidos">APELLIDOS</string>
+    <string name="pica_piedra">Pica Piedra</string>
+    <string name="ci">CI</string>
+    <string name="_8527693">8527693</string>
+    <string name="fecha_nacimiento">FECHA NACIMIENTO</string>
+    <string name="correo">CORREO</string>
+    <string name="pedro_rocas_com">pedro@rocas.com</string>
+    <string name="celular">CELULAR</string>
+    <string name="genero">GENERO</string>
+    <string name="masculino">MASCULINO</string>
+    <string name="femenino">FEMENINO</string>
+    <string name="_453213">453213</string>
+    <string name="lfe231">LFE231</string>
+    <string name="_2016">2016</string>
+    <string name="registro_de_cliente">registro de cliente</string>
 </resources>
