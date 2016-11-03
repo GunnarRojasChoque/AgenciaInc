@@ -37,7 +37,6 @@ class BDCliente extends SQLiteOpenHelper {
                 + COLUMN_CORREO + "TEXT NOT NULL,"
                 + COLUMN_GENERO + "TEXT NOT NULL);";
 
-
         BDCliente(Context context){
             super(context, DATABASE_CLIENTE, null, DATABASE_VERSION);
         }
