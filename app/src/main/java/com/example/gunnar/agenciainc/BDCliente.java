@@ -15,19 +15,27 @@ class BDCliente extends SQLiteOpenHelper {
 
         private static final String TABLE_CLIENTE_IMPORTADORA = "Cliente";
         private static final String COLUMN_ID = "_id";
-        private static final String COLUMN_NOMBRE = "nombre";
-        private static final String COLUMN_SEXO = "sexo";
-        private static final String COLUMN_TELEFONO = "telefono";
+        private static final String COLUMN_NOMBRES = "nombres";
+        private static final String COLUMN_APELLIDOS = "apellidos";
+        private static final String COLUMN_CELULAR = "celular";
+        private static final String COLUMN_CI = "ci";
+        private static final String COLUMN_FECHA_NAC = "fechaNac";
+        private static final String COLUMN_CORREO = "correo";
+        private static final String COLUMN_GENERO = "genero";
 
         private static final String DATABASE_CLIENTE = "BaseDatosCliente.db";
         private static final int DATABASE_VERSION = 1;
 
         //Setencia SQL para crear la base de datos
         private static final String DATABASE_CREATE = "CREATE TABLE"
-                + TABLE_CLIENTE_IMPORTADORA + "(" + COLUMN_ID + " TEXT PRIMARY KEY,"
-                + COLUMN_NOMBRE + "TEXT NOT NULL,"
-                + COLUMN_SEXO + "TEXT NOT NULL,"
-                + COLUMN_TELEFONO + "TEXT NOT NULL);";
+                + TABLE_CLIENTE_IMPORTADORA + "(" + COLUMN_ID + " INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+                + COLUMN_NOMBRES + "TEXT NOT NULL,"
+                + COLUMN_APELLIDOS + "TEXT NOT NULL,"
+                + COLUMN_CELULAR + "INT NOT NULL,"
+                + COLUMN_CI + "INT NOT NULL,"
+                + COLUMN_FECHA_NAC + "TEXT NOT NULL,"
+                + COLUMN_CORREO + "TEXT NOT NULL,"
+                + COLUMN_GENERO + "TEXT NOT NULL);";
 
         BDCliente(Context context){
             super(context, DATABASE_CLIENTE, null, DATABASE_VERSION);

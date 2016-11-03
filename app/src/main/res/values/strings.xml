@@ -16,7 +16,11 @@
     <string name="registro_de_vehiculo">Registro de Vehiculo</string>
     <string name="Cliente">Cliente</string>
     <string name="_id">_id</string>
-    <string name="nombre">Nombre</string>
-    <string name="sexo">Sexo</string>
-    <string name="telefono">Telefono</string>
+    <string name="nombres">Nombres</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="celular">Celular</string>
+    <string name="ci">Ci</string>
+    <string name="fechaNac">FechaNac</string>
+    <string name="correo">Correo</string>
+    <string name="genero">Genero</string>
 </resources>
