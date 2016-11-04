@@ -143,7 +143,7 @@ public class MainCliente extends AppCompatActivity {
         ContentValues contenido=new ContentValues();
 
         contenido.put(baseCliHelper.COLUMN_NOMBRE,client.getNombres());
-        contenido.put(baseCliHelper.COLUMN_APELLLIDO,client.getApellidos());
+        contenido.put(baseCliHelper.COLUMN_APELLIDO,client.getApellidos());
         contenido.put(baseCliHelper.COLUMN_TELEFONO,client.getCelular());
         contenido.put(baseCliHelper.COLUMN_CI,client.getCi());
         contenido.put(baseCliHelper.COLUMN_NACIMIENTO,client.getFechaNac());
