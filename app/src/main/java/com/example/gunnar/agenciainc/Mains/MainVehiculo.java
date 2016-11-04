@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
 import com.example.gunnar.agenciainc.R;
+import com.example.gunnar.agenciainc.Validador;
 import com.example.gunnar.agenciainc.Vehiculo;
 
 import java.util.Calendar;
@@ -115,6 +116,10 @@ public class MainVehiculo extends AppCompatActivity {
         Vehiculo vehiculo = new Vehiculo(modelo.getText().toString(), marca.getText().toString(),
                 chasis.getText().toString(), Integer.parseInt(anio.getText().toString()),
                 fechaNow.getText().toString(), Integer.parseInt(precio.getText().toString()));
+
+
+
+
 
         ContentValues values = new ContentValues();
         values.put(bdVehiculo.COLUMN_MODELO, vehiculo.getModelo());
