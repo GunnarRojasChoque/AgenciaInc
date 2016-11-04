@@ -37,4 +37,9 @@
     <string name="lfe231">LFE231</string>
     <string name="_2016">2016</string>
     <string name="registro_de_cliente">registro de cliente</string>
+    <string name="bienvenido_al_registro_del_mecanico">bienvenido al registro del Mecanico</string>
+    <string name="iagnostico_del_vehiculo">iagnostico del vehiculo</string>
+    <string name="diagnostico_del_vehiculo">diagnostico_del_vehiculo</string>
+    <string name="diagnostico">diagnostico</string>
+    <string name="escriba_el_diagnostico">escriba el diagnostico</string>
 </resources>
