@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
 import com.example.gunnar.agenciainc.R;
+import com.example.gunnar.agenciainc.Validador;
 import com.example.gunnar.agenciainc.Vehiculo;
 
 import java.util.Calendar;
@@ -116,6 +117,10 @@ public class MainVehiculo extends AppCompatActivity {
                 chasis.getText().toString(), Integer.parseInt(anio.getText().toString()),
                 fechaNow.getText().toString(), Integer.parseInt(precio.getText().toString()));
 
+
+
+
+
         ContentValues values = new ContentValues();
         values.put(bdVehiculo.COLUMN_MODELO, vehiculo.getModelo());
         values.put(bdVehiculo.COLUMN_MARCA, vehiculo.getMarca());
@@ -126,10 +131,10 @@ public class MainVehiculo extends AppCompatActivity {
 
         long newRowId = database.insert(BDVehiculo.TABLE_VEHICULO_IMPORTADORA, null, values);
 
-        // ContentValues valuesID = new ContentValues();
-        // valuesID.put(BDVehiculo.COLUMN_ID, newRowId);
+         ContentValues valuesID = new ContentValues();
+         valuesID.put(BDVehiculo.COLUMN_ID, newRowId);
 
-        // database.insert(BDVehiculo.COLUMN_ID, null, valuesID);
+         database.insert(BDVehiculo.COLUMN_ID, null, valuesID);
         Log.i(TAG, "llenarBdVehiculo: id return " + newRowId);
     }
 

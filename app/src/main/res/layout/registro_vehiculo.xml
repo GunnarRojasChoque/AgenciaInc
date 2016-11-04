@@ -98,6 +98,36 @@
             android:hint="@string/_453213"
             android:inputType="number" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/tipo_vehiculo"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/tipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/motocicleta"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/caracteristicas"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/carac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/este_vehiculo_te_permite"
+            android:inputType="number" />
+
         <Button
             android:id="@+id/date"
             style="?android:buttonBarStyle"
