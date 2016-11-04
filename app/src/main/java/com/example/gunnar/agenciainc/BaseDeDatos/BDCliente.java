@@ -7,7 +7,7 @@ import android.util.Log;
 
 /**
  * Clase para la Base de Datos de Cliente
- * Created by ${Alejandra} on 02/11/2016.
+ * Created by ${Alejandra} on 02/11/2016.hjs1
  */
 
 public class BDCliente extends SQLiteOpenHelper {
