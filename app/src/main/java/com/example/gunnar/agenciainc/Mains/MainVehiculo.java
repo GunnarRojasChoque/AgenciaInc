@@ -131,10 +131,10 @@ public class MainVehiculo extends AppCompatActivity {
 
         long newRowId = database.insert(BDVehiculo.TABLE_VEHICULO_IMPORTADORA, null, values);
 
-        // ContentValues valuesID = new ContentValues();
-        // valuesID.put(BDVehiculo.COLUMN_ID, newRowId);
+         ContentValues valuesID = new ContentValues();
+         valuesID.put(BDVehiculo.COLUMN_ID, newRowId);
 
-        // database.insert(BDVehiculo.COLUMN_ID, null, valuesID);
+         database.insert(BDVehiculo.COLUMN_ID, null, valuesID);
         Log.i(TAG, "llenarBdVehiculo: id return " + newRowId);
     }
 

@@ -2,6 +2,8 @@ package com.example.gunnar.agenciainc.Mains;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.gunnar.agenciainc.BaseDeDatos.BDCliente;
 import com.example.gunnar.agenciainc.Cliente;
 import com.example.gunnar.agenciainc.R;
 
@@ -83,9 +86,11 @@ public class MainCliente extends AppCompatActivity {
         registrarCli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Cliente client = new Cliente(nombresCli.getText().toString(), apellidosCli.getText().toString(),
+               /* Cliente client = new Cliente(nombresCli.getText().toString(), apellidosCli.getText().toString(),
                         Integer.valueOf(celularCli.getText().toString()), Integer.valueOf(ciCli.getText().toString()),
                         fechaCli.getText().toString(), correoCli.getText().toString(), rb.getText().toString());
+                */
+                llenarCliente();
 
 
             }
@@ -122,6 +127,36 @@ public class MainCliente extends AppCompatActivity {
             year = i;
             month = i1;
             day = i2;
+            MainVehiculo.fechaNow.setText(year + "/" + month + "/" + day);
         }
     };
+
+    public void llenarCliente(){
+
+        Cliente client = new Cliente(nombresCli.getText().toString(), apellidosCli.getText().toString(),
+                Integer.valueOf(celularCli.getText().toString()), Integer.valueOf(ciCli.getText().toString()),
+                MainVehiculo.fechaNow.getText().toString(), correoCli.getText().toString(),
+                "Masculino");
+
+        BDCliente baseCliHelper=new BDCliente(this);
+        SQLiteDatabase base= baseCliHelper.getWritableDatabase();
+
+        ContentValues contenido=new ContentValues();
+
+        contenido.put(baseCliHelper.COLUMN_NOMBRE,client.getNombres());
+        contenido.put(baseCliHelper.COLUMN_APELLIDO,client.getApellidos());
+        contenido.put(baseCliHelper.COLUMN_TELEFONO,client.getCelular());
+        contenido.put(baseCliHelper.COLUMN_CI,client.getCi());
+        contenido.put(baseCliHelper.COLUMN_NACIMIENTO,client.getFechaNac());
+        contenido.put(baseCliHelper.COLUMN_CORREO,client.getCorreo());
+        contenido.put(baseCliHelper.COLUMN_SEXO,client.getGenero());
+
+        long nuevaFila=base.insert(baseCliHelper.TABLE_CLIENTE_IMPORTADORA,null,contenido);
+
+        //ContentValues conte=new ContentValues();
+        //conte.put(baseCliHelper.COLUMN_ID,nuevaFila);
+        //base.insert(baseCliHelper.TABLE_CLIENTE_IMPORTADORA,null,conte);
+
+
+    }
 }
