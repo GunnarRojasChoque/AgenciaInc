@@ -11,34 +11,25 @@ import android.util.Log;
  */
 
 public class BDCliente extends SQLiteOpenHelper {
-            public static final String TAG = BDCliente.class.getSimpleName();
+        private static final String TAG = BDCliente.class.getSimpleName();
 
-            public static final String TABLE_CLIENTE_IMPORTADORA = "Cliente";
-            public static final String COLUMN_ID = "_id";
-            public static final String COLUMN_NOMBRE = "nombre";
-            public static final String COLUMN_APELLLIDO = "apellido";
-            public static final String COLUMN_TELEFONO = "telefono";
-            public static final String COLUMN_CI = "ci";
-            public static final String COLUMN_NACIMIENTO = "nacimiento";
-            public static final String COLUMN_CORREO = "correo";
-            public static final String COLUMN_SEXO = "sexo";
+        private static final String TABLE_CLIENTE_IMPORTADORA = "Cliente";
+        private static final String COLUMN_ID = "_id";
+        private static final String COLUMN_NOMBRE = "nombre";
+        private static final String COLUMN_SEXO = "sexo";
+        private static final String COLUMN_TELEFONO = "telefono";
 
-            public static final String DATABASE_CLIENTE = "BaseDatosCliente.db";
-            public static final int DATABASE_VERSION = 1;
+        private static final String DATABASE_CLIENTE = "BaseDatosCliente.db";
+        private static final int DATABASE_VERSION = 1;
 
         //Setencia SQL para crear la base de datos
-        private static final String DATABASE_CREATE = "CREATE TABLE "
-                + TABLE_CLIENTE_IMPORTADORA + " (" + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
-                + COLUMN_NOMBRE + " TEXT NOT NULL, "
-                + COLUMN_APELLLIDO + " TEXT NOT NULL, "
-                + COLUMN_TELEFONO + " TEXT NOT NULL, "
-                + COLUMN_CI + " TEXT NOT NULL, "
-                + COLUMN_NACIMIENTO + " TEXT NOT NULL, "
-                + COLUMN_CORREO + " TEXT NOT NULL, "
-                + COLUMN_SEXO + " TEXT NOT NULL ); ";
+        private static final String DATABASE_CREATE = "CREATE TABLE"
+                + TABLE_CLIENTE_IMPORTADORA + "(" + COLUMN_ID + " TEXT PRIMARY KEY,"
+                + COLUMN_NOMBRE + "TEXT NOT NULL,"
+                + COLUMN_SEXO + "TEXT NOT NULL,"
+                + COLUMN_TELEFONO + "TEXT NOT NULL);";
 
-
-        public BDCliente(Context context){
+        BDCliente(Context context){
             super(context, DATABASE_CLIENTE, null, DATABASE_VERSION);
         }
 
