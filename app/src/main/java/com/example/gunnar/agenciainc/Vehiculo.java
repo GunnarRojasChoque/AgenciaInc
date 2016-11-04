@@ -5,7 +5,7 @@ package com.example.gunnar.agenciainc;
  * Created by Gunnar on 31/10/2016.
  */
 
-class Vehiculo {
+public class Vehiculo {
 
     private String modelo;
     private String marca;
@@ -14,7 +14,7 @@ class Vehiculo {
     private String fechaIngreso;
     private int precioIni;
 
-    Vehiculo(String modelo, String marca, String chasis, int año, String fechaIngreso, int precioIni) {
+    public Vehiculo(String modelo, String marca, String chasis, int año, String fechaIngreso, int precioIni) {
         this.modelo = modelo;
         this.marca = marca;
         this.chasis = chasis;
