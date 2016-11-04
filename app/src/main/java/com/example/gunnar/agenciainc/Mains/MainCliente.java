@@ -150,7 +150,6 @@ public class MainCliente extends AppCompatActivity {
         contenido.put(baseCliHelper.COLUMN_CORREO,client.getCorreo());
         contenido.put(baseCliHelper.COLUMN_SEXO,client.getGenero());
 
-
         long nuevaFila=base.insert(baseCliHelper.TABLE_CLIENTE_IMPORTADORA,null,contenido);
 
         //ContentValues conte=new ContentValues();
