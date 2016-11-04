@@ -11,32 +11,32 @@ import android.util.Log;
  */
 
 
-class BDVehiculo extends SQLiteOpenHelper {
+public class BDVehiculo extends SQLiteOpenHelper {
     private static final String TAG = BDVehiculo.class.getSimpleName();
 
-    private static final String TABLE_VEHICULO_IMPORTADORA = "Vehiculo";
-    private static final String COLUMN_ID = "_id";
-    private static final String COLUMN_MODELO = "modelo";
-    private static final String COLUMN_MARCA = "marca";
-    private static final String COLUMN_CHASIS = "chasis";
-    private static final String COLUMN_ANIO = "año";
-    private static final String COLUMN_PRECIO = "precio";
-    private static final String COLUMN_FECHA = "fecha";
+    public static final String TABLE_VEHICULO_IMPORTADORA = "Vehiculo";
+    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_MODELO = "modelo";
+    public static final String COLUMN_MARCA = "marca";
+    public static final String COLUMN_CHASIS = "chasis";
+    public static final String COLUMN_ANIO = "anio";
+    public static final String COLUMN_PRECIO = "precio";
+    public static final String COLUMN_FECHA = "fecha";
 
-    private static final String DATABASE_VEHICULO = "BaseDatosCliente.db";
+    private static final String DATABASE_VEHICULO = "BaseDatosVehiculo.db";
     private static final int DATABASE_VERSION = 1;
 
     //Setencia SQL para crear la base de datos
-    private static final String DATABASE_CREATE = "CREATE TABLE"
-            + TABLE_VEHICULO_IMPORTADORA + "(" + COLUMN_ID + " TEXT PRIMARY KEY,"
-            + COLUMN_MODELO + "TEXT NOT NULL,"
-            + COLUMN_MARCA + "TEXT NOT NULL,"
-            + COLUMN_CHASIS + "TEXT NOT NULL,"
-            + COLUMN_ANIO + "TEXT NOT NULL,"
-            + COLUMN_PRECIO + "TEXT NOT NULL,"
-            + COLUMN_FECHA + "TEXT NOT NULL);";
+    private static final String DATABASE_CREATE = "CREATE TABLE "
+            + TABLE_VEHICULO_IMPORTADORA + " (" + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_MODELO + " TEXT NOT NULL, "
+            + COLUMN_MARCA + " TEXT NOT NULL, "
+            + COLUMN_CHASIS + " TEXT NOT NULL, "
+            + COLUMN_ANIO + " TEXT NOT NULL, "
+            + COLUMN_PRECIO + " TEXT NOT NULL, "
+            + COLUMN_FECHA + " TEXT NOT NULL);";
 
-    BDVehiculo(Context context) {
+    public BDVehiculo(Context context) {
         super(context, DATABASE_VEHICULO, null, DATABASE_VERSION);
     }
 

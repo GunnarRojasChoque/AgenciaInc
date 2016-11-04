@@ -10,7 +10,7 @@ import android.util.Log;
  * Created by ${Alejandra} on 02/11/2016.
  */
 
-class BDCliente extends SQLiteOpenHelper {
+public class BDCliente extends SQLiteOpenHelper {
         private static final String TAG = BDCliente.class.getSimpleName();
 
         private static final String TABLE_CLIENTE_IMPORTADORA = "Cliente";
