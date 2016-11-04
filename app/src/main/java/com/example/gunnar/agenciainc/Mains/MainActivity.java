@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button registroV;
     private Button registroCL;
+    private Button catalogo;
     private static Context context;
 
     private static final String TAG = MainActivity.class.getName();
@@ -22,13 +23,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         context = this;
-//Prueba
+
         initView();
     }
 
     private void initView(){
         registroV = (Button) findViewById(R.id.registroV);
         registroCL = (Button) findViewById(R.id.registroCl);
+        catalogo = (Button) findViewById(R.id.catalogo);
 
         registroV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MainCliente.class);
+                startActivity(intent);
+            }
+        });
+
+        catalogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MainCatalogo.class);
                 startActivity(intent);
             }
         });

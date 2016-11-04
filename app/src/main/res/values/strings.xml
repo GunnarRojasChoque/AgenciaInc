@@ -37,4 +37,9 @@
     <string name="lfe231">LFE231</string>
     <string name="_2016">2016</string>
     <string name="registro_de_cliente">registro de cliente</string>
+    <string name="tipo_vehiculo">Tipo Vehiculo</string>
+    <string name="motocicleta">Motocicleta</string>
+    <string name="caracteristicas">Caracteristicas</string>
+    <string name="este_vehiculo_te_permite">Este Vehiculo te permite...</string>
+    <string name="catalgo_vehiculos">Catalgo Vehiculos</string>
 </resources>

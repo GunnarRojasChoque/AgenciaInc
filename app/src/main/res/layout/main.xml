@@ -9,9 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.gunnar.agenciainc.Mains.Main">
-
-
+    tools:context="com.example.gunnar.agenciainc.Mains.MainActivity">
 
     <Button
         android:id="@+id/registroV"
@@ -25,4 +23,9 @@
         android:layout_height="wrap_content"
         android:text="@string/registro_de_cliente" />
 
+    <Button
+        android:id="@+id/catalogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/catalgo_vehiculos" />
 </LinearLayout>
