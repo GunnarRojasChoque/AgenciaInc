@@ -3,16 +3,26 @@ package com.example.gunnar.agenciainc;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 /**
  * Created by Max
  */
 
-public abstract class Validador extends Context {
+public abstract class Validador extends Context implements TextWatcher
+{
 
+    /**public @interface ConfirmEmail {
+        @StringRes int messageResId()   default -1;
+        String message()                default "Emails don't match";
+        int sequence()                  default -1;
+    }*/
 
     public void mailV(String email) {
         //boolean isValid = false;
@@ -74,15 +84,15 @@ public abstract class Validador extends Context {
         String expression =  "(^[A-Za-z]{0,4})*([0-9]{3,})$";//cmo maximo 4 char letra y despues como minimo 3 char numero
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(placa);
-        if (matcher.find()) {
-            System.out.println("correcto");
-            return true;
-        } else {
-            return false;
+           if (matcher.find()) {
+                System.out.println("correcto");
+                return true;
+            } else {
+                return false;
         }
     }
     public boolean precioV(String precio){
-        String expression =  "([0-9]{20,})$";//precios de V solo numeros
+        String expression =  "([0-9]{10,})$";//precios de V solo numeros
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(precio);
         if (matcher.find()) {
@@ -93,5 +103,39 @@ public abstract class Validador extends Context {
         }
     }
 
+    public boolean anioV(String anio){
+        String exprecion = "^[0-9]";
+        Pattern p = Pattern.compile(exprecion);
+        Matcher m = p.matcher(anio) ;
+        if (m.find()){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-}
+
+
+        /*private final EditText editText;
+
+        public Validador(EditText editText) {
+            this.editText = editText;
+        }
+
+        public abstract void validate(EditText editText, String text);
+
+        @Override
+        final public void afterTextChanged(Editable s) {
+            String text = editText.getText().toString();
+            validate(editText, text);
+        }
+
+        @Override
+        final public void beforeTextChanged(CharSequence s, int start, int count, int after) { /* Don't care */ }
+
+
+      /**  @Override
+        final public void onTextChanged(CharSequence s, int start, int before, int count) { /* Don't care */
+
+
+
