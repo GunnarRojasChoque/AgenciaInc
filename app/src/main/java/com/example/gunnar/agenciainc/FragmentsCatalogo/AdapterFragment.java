@@ -50,7 +50,7 @@ public class AdapterFragment extends FragmentPagerAdapter {
         fs.setArguments(bundle);
 
 
-        Fragment fs2 = new FragmentAutomovil();
+        Fragment fs2 = new FragmentCamioneta();
         fs2.setArguments(bundle2);
 
         Fragment fg3 = new FragmentJeep();

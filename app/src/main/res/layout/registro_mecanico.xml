@@ -23,7 +23,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="@string/diagnostico_del_vehiculo"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
@@ -129,7 +128,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="@string/diagnostico"
             android:textAllCaps="true"
             android:textColor="@android:color/black" />
 
@@ -137,7 +135,6 @@
             android:id="@+id/etdiasnostico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/escriba_el_diagnostico"
             android:inputType="text" />
 
         <Button

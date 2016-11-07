@@ -66,11 +66,9 @@ public class AdapterCatalogo  extends RecyclerView.Adapter<AdapterCatalogo.ViewH
                             vehiculo.COLUMN_IMAGEN
                     };
 
-                    String sortOrder =
-                            vehiculo.COLUMN_MODELO + " DESC";
 
-                    String selection = vehiculo.COLUMN_TIPO + " = ?";
-                    String[] selectionArgs = { "Automovil" };
+                    String selection = vehiculo.COLUMN_ID + " = ?";
+                    String[] selectionArgs = { position + 1 + "" };
 
                     Cursor c = db.query(
                             vehiculo.TABLE_VEHICULO_IMPORTADORA,
@@ -79,7 +77,7 @@ public class AdapterCatalogo  extends RecyclerView.Adapter<AdapterCatalogo.ViewH
                             selectionArgs,
                             null,
                             null,
-                            sortOrder
+                            null
                     );
 
                     if(c.moveToFirst()){

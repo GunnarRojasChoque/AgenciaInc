@@ -20,6 +20,9 @@
         </activity>
         <activity android:name=".Mains.MainCliente"></activity>
         <activity android:name=".Mains.MainVehiculo"></activity>
+        <activity
+            android:name=".Mains.MainCatalogo"
+            android:theme="@style/AppThemeNoAction"></activity>
     </application>
 
 </manifest>

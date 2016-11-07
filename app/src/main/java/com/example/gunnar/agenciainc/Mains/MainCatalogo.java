@@ -8,8 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
 import com.example.gunnar.agenciainc.FragmentsCatalogo.AdapterFragment;
 import com.example.gunnar.agenciainc.R;
+
+import static com.example.gunnar.agenciainc.Mains.MainActivity.db;
+import static com.example.gunnar.agenciainc.Mains.MainActivity.vehiculo;
 
 public class MainCatalogo extends AppCompatActivity {
 
@@ -22,10 +26,13 @@ public class MainCatalogo extends AppCompatActivity {
     public static TabLayout tabLayout;
     public static Context context;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_catalogo);
+
+
 
         context = this;
         initToolbar();
@@ -47,7 +54,7 @@ public class MainCatalogo extends AppCompatActivity {
 
         viewPager.setAdapter(adapterFragment);
 
-        viewPager.setOffscreenPageLimit(6);
+        viewPager.setOffscreenPageLimit(0);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

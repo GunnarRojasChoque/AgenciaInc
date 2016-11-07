@@ -23,13 +23,12 @@ public class BDMecanico extends SQLiteOpenHelper {
     public static final String COLUMN_FECHA = "fecha";
 
 
-
     private static final String DATABASE_MECANICO = "BaseDatosMecanico.db";
     private static final int DATABASE_VERSION = 1;
 
     //Setencia SQL para crear la base de datos
     private static final String DATABASE_CREATE = "CREATE TABLE "
-            + TABLE_MECANICO_IMPORTADORA + " (" + COLUMN_ID + " INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+            + TABLE_MECANICO_IMPORTADORA + " (" + COLUMN_ID + " INT NOT NULL AUTOINCREMENT PRIMARY KEY, "
             + COLUMN_NOMBRES + " TEXT NOT NULL, "
             + COLUMN_APELLIDOS + " TEXT NOT NULL, "
             + COLUMN_CELULAR + " INT NOT NULL, "
@@ -39,12 +38,12 @@ public class BDMecanico extends SQLiteOpenHelper {
             + COLUMN_FECHA + " TEXT NOT NULL);";
 
 
-    public BDMecanico(Context context){
+    public BDMecanico(Context context) {
         super(context, DATABASE_MECANICO, null, DATABASE_VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db){
+    public void onCreate(SQLiteDatabase db) {
         //Ejecuta la sentencia SQL y crea la base de datos
         db.execSQL(DATABASE_CREATE);
     }

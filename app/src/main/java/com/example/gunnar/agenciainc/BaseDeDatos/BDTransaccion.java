@@ -4,11 +4,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
 /**
  * Created by Max on 04/11/2016.
  */
 
-public class BDTransaccion extends SQLiteOpenHelper{
+public class BDTransaccion extends SQLiteOpenHelper {
     private static final String TAG = BDTransaccion.class.getSimpleName();
 
     private static final String TABLE_FORMULARIO_TRANSACCION = "transaccion";
@@ -17,10 +18,10 @@ public class BDTransaccion extends SQLiteOpenHelper{
     private static final String COLUMN_VENDEDOR = "vendedor";
     private static final String COLUMN_MODELO = "modelo";
     private static final String COLUMN_DESCUENTO = "descuento";
-    private static final String COLUMN_PRECIOTOTAL ="precio_total";
+    private static final String COLUMN_PRECIOTOTAL = "precio_total";
     private static final String COLUMN_NUMERO_IMPORTACION = "numero_importacion";
-    private static final String COLUMN_FECHA= "fecha";
-    private static final String COLUMN_CIUDAD= "ciudad";
+    private static final String COLUMN_FECHA = "fecha";
+    private static final String COLUMN_CIUDAD = "ciudad";
 
     private static final String DATABASE_TRANSACCION = "BaseDatosTransaccion.db";
     private static final int DATABASE_VERSION = 1;
@@ -38,12 +39,12 @@ public class BDTransaccion extends SQLiteOpenHelper{
             + COLUMN_CIUDAD + " TEXT NOT NULL );";
 
 
-    public BDTransaccion(Context context){
+    public BDTransaccion(Context context) {
         super(context, DATABASE_TRANSACCION, null, DATABASE_VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db){
+    public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE);//Ejecuta la sentencia SQL y crea la base de datos
     }
 
@@ -53,7 +54,6 @@ public class BDTransaccion extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FORMULARIO_TRANSACCION);
         onCreate(db);
     }
-
 
 
 }

@@ -33,25 +33,25 @@ public class MainVehiculo extends AppCompatActivity {
 
     private static final String TAG = MainVehiculo.class.getSimpleName();
     // Datos del formulario.
-    public static EditText modelo;
-    public static EditText marca;
-    public static EditText chasis;
-    public static EditText anio;
-    public static EditText precio;
-    public static Spinner tipo;
-    public static EditText caracteristicas;
+    EditText modelo;
+    EditText marca;
+    EditText chasis;
+    EditText anio;
+    EditText precio;
+    Spinner tipo;
+    EditText caracteristicas;
     public static TextView fechaNow;
-    public static Button fech;
-    public static Button registro;
-    public static Button cancelar;
+    Button fech;
+    Button registro;
+    Button cancelar;
 
-    public static ImageView bitma;
-    public static Bitmap bitmap;
-    public static int year, month, day;
+    ImageView bitma;
+    public Bitmap bitmap;
+    public int year, month, day;
     // Dialog Date.
-    public static final int id_dialog = 0;
+    int id_dialog = 0;
     // BD vehiculo.
-    public static SQLiteDatabase database;
+    SQLiteDatabase database;
 
     private static final int REQUEST_CODE_ACTION_ADD_FROM_STORAGE = 0;
     private static final int REQUEST_CODE_ACTION_ADD_FROM_CAMERA = 1;
