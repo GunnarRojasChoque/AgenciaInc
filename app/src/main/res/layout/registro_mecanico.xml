@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.alvaro.pruebacliente.MainActivity">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/diagnostico_del_vehiculo"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvnombres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/nombres"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/etnombres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/pedro_paco"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/tvapellidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/apellidos"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/etapellidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/pica_piedra"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/tvci"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/ci"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/etci"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/_8527693"
+            android:inputType="number" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvfecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tvnacimiento" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tvcelular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/celular"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/etcelular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/_453213"
+            android:inputType="phone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/chasis"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/chasis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lfe231" />
+
+        <TextView
+            android:id="@+id/tvdiagnostico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/diagnostico"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/etdiasnostico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/escriba_el_diagnostico"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/date"
+            style="?android:buttonBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fecha_de_ingreso" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btncancelar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancelar"
+                android:textColor="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/btnregistrar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/registrar"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
