@@ -22,6 +22,7 @@ public class BDVehiculo extends SQLiteOpenHelper {
     public static final String COLUMN_ANIO = "anio";
     public static final String COLUMN_PRECIO = "precio";
     public static final String COLUMN_FECHA = "fecha";
+    public static final String COLUMN_IMAGEN = "imagen";
     public static final String COLUMN_TIPO = "tipo_vehiculo";
     public static final String COLUMN_CARACTERISTICAS = "caractersticas";
 
@@ -37,6 +38,7 @@ public class BDVehiculo extends SQLiteOpenHelper {
             + COLUMN_ANIO + " TEXT NOT NULL, "
             + COLUMN_PRECIO + " TEXT NOT NULL, "
             + COLUMN_FECHA + " TEXT NOT NULL, "
+            + COLUMN_IMAGEN + " BLOB, "
             + COLUMN_TIPO + " TEXT NOT NULL, "
             + COLUMN_CARACTERISTICAS + " TEXT NOT NULL);";
 

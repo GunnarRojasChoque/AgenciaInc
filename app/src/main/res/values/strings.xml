@@ -40,6 +40,27 @@
     <string name="tipo_vehiculo">Tipo Vehiculo</string>
     <string name="motocicleta">Motocicleta</string>
     <string name="caracteristicas">Caracteristicas</string>
-    <string name="este_vehiculo_te_permite">Este Vehiculo te permite...</string>
+    <string name="este_vehiculo_te_permite">Este Vehiculo te permite…</string>
     <string name="catalgo_vehiculos">Catalgo Vehiculos</string>
+    <string name="automovil">Automovil</string>
+    <string name="camioneta">Camioneta</string>
+    <string name="jepp">Jeep</string>
+    <string name="minibus">Minibus</string>
+    <string name="motocicleta_name">Motocicleta</string>
+    <string name="trailer">Trailer</string>
+    <string name="vagoneta">Vagoneta</string>
+    <string name="car">Car</string>
+    <string name="a_adir_imagen_de_galeria">Añadir Imagen de Galeria</string>
+    <string name="tomar_foto">Tomar foto</string>
+    <string name="imagen">Imagen</string>
+
+    <string-array name="tipe_car">
+        <item>@string/automovil</item>
+        <item>@string/vagoneta</item>
+        <item>@string/jepp</item>
+        <item>@string/camioneta</item>
+        <item>@string/minibus</item>
+        <item>@string/trailer</item>
+        <item>@string/motocicleta_name</item>
+    </string-array>
 </resources>

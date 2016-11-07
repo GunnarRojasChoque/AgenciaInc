@@ -1,23 +1,32 @@
 package com.example.gunnar.agenciainc.Mains;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
 import com.example.gunnar.agenciainc.R;
-import com.example.gunnar.agenciainc.Validador;
 import com.example.gunnar.agenciainc.Vehiculo;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Calendar;
 
 public class MainVehiculo extends AppCompatActivity {
@@ -29,15 +38,25 @@ public class MainVehiculo extends AppCompatActivity {
     public static EditText chasis;
     public static EditText anio;
     public static EditText precio;
+    public static Spinner tipo;
+    public static EditText caracteristicas;
     public static TextView fechaNow;
     public static Button fech;
     public static Button registro;
     public static Button cancelar;
+
+    public static ImageView bitma;
+    public static Bitmap bitmap;
     public static int year, month, day;
     // Dialog Date.
     public static final int id_dialog = 0;
     // BD vehiculo.
     public static SQLiteDatabase database;
+
+    private static final int REQUEST_CODE_ACTION_ADD_FROM_STORAGE = 0;
+    private static final int REQUEST_CODE_ACTION_ADD_FROM_CAMERA = 1;
+    private static final String BUNDLE_SAVED_BITMAPS = "bitmaps";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,11 +80,14 @@ public class MainVehiculo extends AppCompatActivity {
         marca = (EditText) findViewById(R.id.marca);
         chasis = (EditText) findViewById(R.id.chasis);
         anio = (EditText) findViewById(R.id.anio);
+        tipo = (Spinner) findViewById(R.id.tipo);
+        caracteristicas = (EditText) findViewById(R.id.carac);
         precio = (EditText) findViewById(R.id.precio);
         fechaNow = (TextView) findViewById(R.id.dateNow);
         registro = (Button) findViewById(R.id.registrar);
         cancelar = (Button) findViewById(R.id.Cancelar);
         fech = (Button) findViewById(R.id.date);
+        bitma = (ImageView) findViewById(R.id.add);
 
         fechaNow.setText(year + "/" + month + "/" + day);
 
@@ -119,22 +141,28 @@ public class MainVehiculo extends AppCompatActivity {
 
 
 
+        BitmapConvert bitmapConvert = new BitmapConvert();
+        byte[] bytes;
 
+        bytes = bitmapConvert.getBytes(bitmap);
 
         ContentValues values = new ContentValues();
         values.put(bdVehiculo.COLUMN_MODELO, vehiculo.getModelo());
         values.put(bdVehiculo.COLUMN_MARCA, vehiculo.getMarca());
         values.put(bdVehiculo.COLUMN_CHASIS, vehiculo.getChasis());
         values.put(bdVehiculo.COLUMN_ANIO, vehiculo.getAño());
-        values.put(bdVehiculo.COLUMN_FECHA, vehiculo.getFechaIngreso());
         values.put(bdVehiculo.COLUMN_PRECIO, vehiculo.getPrecioIni());
+        values.put(bdVehiculo.COLUMN_FECHA, vehiculo.getFechaIngreso());
+        values.put(bdVehiculo.COLUMN_TIPO, tipo.getSelectedItem().toString());
+        values.put(bdVehiculo.COLUMN_CARACTERISTICAS, caracteristicas.getText().toString());
+        values.put(bdVehiculo.COLUMN_IMAGEN, bytes);
 
         long newRowId = database.insert(BDVehiculo.TABLE_VEHICULO_IMPORTADORA, null, values);
 
-         ContentValues valuesID = new ContentValues();
-         valuesID.put(BDVehiculo.COLUMN_ID, newRowId);
-
-         database.insert(BDVehiculo.COLUMN_ID, null, valuesID);
+//         ContentValues valuesID = new ContentValues();
+//         valuesID.put(BDVehiculo.COLUMN_ID, newRowId);
+//
+//         database.insert(BDVehiculo.COLUMN_ID, null, valuesID);
         Log.i(TAG, "llenarBdVehiculo: id return " + newRowId);
     }
 
@@ -156,4 +184,52 @@ public class MainVehiculo extends AppCompatActivity {
             fechaNow.setText(year + "/" + month + "/" + day);
         }
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (R.id.action_add_from_camera == item.getItemId()) {
+            Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(cameraIntent, REQUEST_CODE_ACTION_ADD_FROM_CAMERA);
+            return true;
+        } else if (R.id.action_add_from_storage == item.getItemId()) {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            startActivityForResult(intent, REQUEST_CODE_ACTION_ADD_FROM_STORAGE);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (Activity.RESULT_OK == resultCode) {
+            if (REQUEST_CODE_ACTION_ADD_FROM_STORAGE == requestCode) {
+                try {
+                    InputStream stream = getContentResolver().openInputStream(
+                            data.getData());
+                    bitmap = BitmapFactory.decodeStream(stream);
+                    stream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (REQUEST_CODE_ACTION_ADD_FROM_CAMERA == requestCode) {
+                Bundle extras = data.getExtras();
+                bitmap = (Bitmap) extras.get("data"); // Just a thumbnail, but works okay for this.
+            }
+        }
+
+        if (bitmap != null) {
+            bitma.setImageBitmap(bitmap);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

@@ -106,12 +106,13 @@
             android:textAllCaps="true"
             android:textColor="@android:color/black" />
 
-        <EditText
+        <Spinner
             android:id="@+id/tipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/motocicleta"
-            android:inputType="number" />
+            android:layout_marginTop="10dp"
+            android:entries="@array/tipe_car"
+            android:scrollbars="none" />
 
         <TextView
             android:layout_width="match_parent"
@@ -137,6 +138,21 @@
 
         <TextView
             android:id="@+id/dateNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/imagen"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
