@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
+import com.example.gunnar.agenciainc.FragmentsCatalogo.MainDetallleVehivulo;
 import com.example.gunnar.agenciainc.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button registroV;
     private Button registroCL;
     private Button catalogo;
+    private Button detelleV;
     private static Context context;
 
     public SQLiteDatabase database;
@@ -33,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
         initView();
     }
 
-    private void initView(){
+    private void initView() {
         registroV = (Button) findViewById(R.id.registroV);
         registroCL = (Button) findViewById(R.id.registroCl);
         catalogo = (Button) findViewById(R.id.catalogo);
+        detelleV = (Button) findViewById(R.id.btnDetalleV);
 
         registroV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MainCatalogo.class);
+                startActivity(intent);
+            }
+        });
+        detelleV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,MainDetallleVehivulo.class);
                 startActivity(intent);
             }
         });

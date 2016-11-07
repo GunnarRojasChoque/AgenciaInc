@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
+import com.example.gunnar.agenciainc.FragmentsCatalogo.MainDetallleVehivulo;
 import com.example.gunnar.agenciainc.R;
 import com.example.gunnar.agenciainc.Vehiculo;
 
@@ -64,6 +65,7 @@ public class MainVehiculo extends AppCompatActivity {
 
         initCalendar();
         initRegistro();
+       // MainDetallleVehivulo mdv=new MainDetallleVehivulo();
 
     }
 

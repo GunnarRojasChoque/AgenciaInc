@@ -127,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/este_vehiculo_te_permite"
-            android:inputType="number" />
+            android:inputType="text" />
 
         <Button
             android:id="@+id/date"
