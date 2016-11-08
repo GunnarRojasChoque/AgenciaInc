@@ -52,6 +52,7 @@ public class BDContrato extends SQLiteOpenHelper {
             + COLUMN_SALARIO + " TEXT NOT NULL );";
 
 
+
     public BDContrato(Context context) {
         super(context, DATABASE_CLIENTE, null, DATABASE_VERSION);
     }
