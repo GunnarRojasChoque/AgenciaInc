@@ -30,7 +30,6 @@ public class MainDetalleVehiculo extends AppCompatActivity {
 
         llenardatos(savedInstanceState);
 
-
     }
 
     public void llenardatos(Bundle bundle){
