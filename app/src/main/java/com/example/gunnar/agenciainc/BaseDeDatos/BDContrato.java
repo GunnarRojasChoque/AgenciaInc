@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class BDContrato extends SQLiteOpenHelper {
 
-    private static final String TAG = BDCliente.class.getSimpleName();
+    private static final String TAG = BDContrato.class.getSimpleName();
 
     public static final String TABLE_CONTRATO_EMPLEADO = "Contrato";
     public static final String COLUMN_ID = "_id";
@@ -45,7 +45,6 @@ public class BDContrato extends SQLiteOpenHelper {
             + COLUMN_CORREO + " TEXT NOT NULL, "
             + COLUMN_DIRECCION + " TEXT NOT NULL, "
             + COLUMN_PAIS + " TEXT NOT NULL, "
-            + COLUMN_CARGO + " TEXT NOT NULL, "
             + COLUMN_FECHA_INICIO + " TEXT NOT NULL, "
             + COLUMN_FECHA_FIN + " TEXT NOT NULL,"
             + COLUMN_CARGO + "TEXT NOT NULL, "
