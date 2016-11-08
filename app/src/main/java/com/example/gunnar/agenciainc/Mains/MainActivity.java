@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
-import com.example.gunnar.agenciainc.FragmentsCatalogo.MainDetallleVehivulo;
+import com.example.gunnar.agenciainc.FragmentsCatalogo.MainDetalleVehiculo;
 import com.example.gunnar.agenciainc.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         detelleV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,MainDetallleVehivulo.class);
+                Intent intent = new Intent(context,MainDetalleVehiculo.class);
                 startActivity(intent);
             }
         });

@@ -1,7 +1,5 @@
 package com.example.gunnar.agenciainc.FragmentsCatalogo;
 
-import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -9,12 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
 import com.example.gunnar.agenciainc.Mains.BitmapConvert;
-import com.example.gunnar.agenciainc.Mains.MainCatalogo;
 import com.example.gunnar.agenciainc.R;
 
-public class MainDetallleVehivulo extends AppCompatActivity {
+public class MainDetalleVehiculo extends AppCompatActivity {
 
     private static TextView tipo,
             modelo,
@@ -29,7 +25,7 @@ public class MainDetallleVehivulo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_detallle_vehivulo);
+        setContentView(R.layout.activity_main_detalle_vehiculo);
         initDetalle();
 
         llenardatos(savedInstanceState);
