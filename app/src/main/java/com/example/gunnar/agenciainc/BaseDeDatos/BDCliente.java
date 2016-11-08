@@ -30,7 +30,7 @@ public class BDCliente extends SQLiteOpenHelper {
 
     //Setencia SQL para crear la base de datos
     private static final String DATABASE_CREATE = "CREATE TABLE "
-            + TABLE_CLIENTE_IMPORTADORA + "(" + COLUMN_ID + " TEXT PRIMARY KEY,"
+            + TABLE_CLIENTE_IMPORTADORA + " (" + COLUMN_ID + " TEXT PRIMARY KEY,"
             + COLUMN_NOMBRE + " TEXT NOT NULL, "
             + COLUMN_APELLIDO + " TEXT NOT NULL, "
             + COLUMN_TELEFONO + " TEXT NOT NULL, "

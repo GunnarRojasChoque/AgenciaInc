@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -28,6 +29,11 @@ import com.example.gunnar.agenciainc.Vehiculo;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
+
+/**
+ * for convert from bitmap to array bitmap.
+ * Created by Gunnar on 6/11/2016.
+ */
 
 public class MainVehiculo extends AppCompatActivity {
 
@@ -55,7 +61,6 @@ public class MainVehiculo extends AppCompatActivity {
 
     private static final int REQUEST_CODE_ACTION_ADD_FROM_STORAGE = 0;
     private static final int REQUEST_CODE_ACTION_ADD_FROM_CAMERA = 1;
-    private static final String BUNDLE_SAVED_BITMAPS = "bitmaps";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +133,7 @@ public class MainVehiculo extends AppCompatActivity {
         anio.setText("");
         fechaNow.setText("");
         precio.setText("");
+        caracteristicas.setText("");
     }
 
     private void llenarBdVehiculo(){
@@ -144,9 +150,14 @@ public class MainVehiculo extends AppCompatActivity {
         BitmapConvert bitmapConvert = new BitmapConvert();
         byte[] bytes;
 
+        int res = getID(tipo.getSelectedItemPosition() + 1);
+        Log.i(TAG, "llenarBdVehiculo: spinner pos" + res);
+
         bytes = bitmapConvert.getBytes(bitmap);
 
+
         ContentValues values = new ContentValues();
+        values.put(bdVehiculo.COLUMN_ID, res);
         values.put(bdVehiculo.COLUMN_MODELO, vehiculo.getModelo());
         values.put(bdVehiculo.COLUMN_MARCA, vehiculo.getMarca());
         values.put(bdVehiculo.COLUMN_CHASIS, vehiculo.getChasis());
@@ -159,10 +170,6 @@ public class MainVehiculo extends AppCompatActivity {
 
         long newRowId = database.insert(BDVehiculo.TABLE_VEHICULO_IMPORTADORA, null, values);
 
-//         ContentValues valuesID = new ContentValues();
-//         valuesID.put(BDVehiculo.COLUMN_ID, newRowId);
-//
-//         database.insert(BDVehiculo.COLUMN_ID, null, valuesID);
         Log.i(TAG, "llenarBdVehiculo: id return " + newRowId);
     }
 
@@ -184,6 +191,51 @@ public class MainVehiculo extends AppCompatActivity {
             fechaNow.setText(year + "/" + month + "/" + day);
         }
     };
+
+    private int getID(int posItem){
+        switch (posItem) {
+            case 1:
+                return sizeBD(getString(R.string.automovil));
+            case 2:
+                return sizeBD(getString(R.string.vagoneta));
+            case 3:
+                return sizeBD(getString(R.string.jepp));
+            case 4:
+                return sizeBD(getString(R.string.camioneta));
+            case 5:
+                return sizeBD(getString(R.string.minibus));
+            case 6:
+                return sizeBD(getString(R.string.trailer));
+            case 7:
+                return sizeBD(getString(R.string.motocicleta_name));
+            default:
+                return 0;
+        }
+    }
+
+    private int sizeBD(String cad) {
+        BDVehiculo vehiculo = new BDVehiculo(this);
+        SQLiteDatabase db = vehiculo.getReadableDatabase();
+
+        String[] projection = {
+                vehiculo.COLUMN_ID,
+        };
+
+        String selection = vehiculo.COLUMN_TIPO + " = ?";
+        String[] selectionArgs = {cad};
+
+        Cursor c = db.query(
+                vehiculo.TABLE_VEHICULO_IMPORTADORA,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        return c.getCount();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

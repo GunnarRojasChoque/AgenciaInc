@@ -3,9 +3,7 @@ package com.example.gunnar.agenciainc;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.EditText;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,14 +13,16 @@ import java.util.regex.Pattern;
  * Created by Max
  */
 
-public abstract class Validador extends Context implements TextWatcher
-{
+public abstract class Validador extends Context implements TextWatcher {
 
-    /**public @interface ConfirmEmail {
-        @StringRes int messageResId()   default -1;
-        String message()                default "Emails don't match";
-        int sequence()                  default -1;
-    }*/
+    /**
+     * public @interface ConfirmEmail {
+     *
+     * @StringRes int messageResId()   default -1;
+     * String message()                default "Emails don't match";
+     * int sequence()                  default -1;
+     * }
+     */
 
     public void mailV(String email) {
         //boolean isValid = false;
@@ -80,19 +80,21 @@ public abstract class Validador extends Context implements TextWatcher
             alerta.show();
         }
     }
-    public boolean placaV(String placa){
-        String expression =  "(^[A-Za-z]{0,4})*([0-9]{3,})$";//cmo maximo 4 char letra y despues como minimo 3 char numero
+
+    public boolean placaV(String placa) {
+        String expression = "(^[A-Za-z]{0,4})*([0-9]{3,})$";//cmo maximo 4 char letra y despues como minimo 3 char numero
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(placa);
-           if (matcher.find()) {
-                System.out.println("correcto");
-                return true;
-            } else {
-                return false;
+        if (matcher.find()) {
+            System.out.println("correcto");
+            return true;
+        } else {
+            return false;
         }
     }
-    public boolean precioV(String precio){
-        String expression =  "([0-9]{10,})$";//precios de V solo numeros
+
+    public boolean precioV(String precio) {
+        String expression = "([0-9]{10,})$";//precios de V solo numeros
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(precio);
         if (matcher.find()) {
@@ -103,11 +105,11 @@ public abstract class Validador extends Context implements TextWatcher
         }
     }
 
-    public boolean anioV(String anio){
+    public boolean anioV(String anio) {
         String exprecion = "^[0-9]";
         Pattern p = Pattern.compile(exprecion);
-        Matcher m = p.matcher(anio) ;
-        if (m.find()){
+        Matcher m = p.matcher(anio);
+        if (m.find()) {
             return true;
         } else {
             return false;
@@ -131,11 +133,13 @@ public abstract class Validador extends Context implements TextWatcher
         }
 
         @Override
-        final public void beforeTextChanged(CharSequence s, int start, int count, int after) { /* Don't care */ }
+        final public void beforeTextChanged(CharSequence s, int start, int count, int after) { /* Don't care */
+}
 
 
-      /**  @Override
-        final public void onTextChanged(CharSequence s, int start, int before, int count) { /* Don't care */
+/**
+ * @Override final public void onTextChanged(CharSequence s, int start, int before, int count) { /* Don't care
+ */
 
 
 
