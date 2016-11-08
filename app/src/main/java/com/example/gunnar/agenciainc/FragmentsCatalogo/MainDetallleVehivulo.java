@@ -66,6 +66,7 @@ public class MainDetallleVehivulo extends AppCompatActivity {
         imagen.setImageBitmap(bitmap);
 
 
+
     }
     public void initDetalle(){
         //BDVehiculo vehiculo = new BDVehiculo(this);
