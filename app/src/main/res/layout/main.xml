@@ -29,4 +29,10 @@
         android:layout_height="wrap_content"
         android:text="@string/catalgo_vehiculos" />
 
+    <Button
+        android:text="DETALLE VEHICULO"
+        android:layout_width="172dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDetalleV" />
+
 </LinearLayout>
