@@ -3,6 +3,7 @@ package com.example.gunnar.agenciainc.Mains;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,12 +37,14 @@ public class MainCliente extends AppCompatActivity {
     public static RadioButton rb;
     public static int year, month, day;
     public static final int id_dialog = 0;
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_cliente);
 
+        context = this;
         initCalendar();
         initRegistrtoCli();
     }
