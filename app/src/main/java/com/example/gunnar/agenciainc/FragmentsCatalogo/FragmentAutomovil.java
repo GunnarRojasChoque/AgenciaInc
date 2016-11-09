@@ -24,8 +24,6 @@ public class FragmentAutomovil extends Fragment {
     public static RecyclerView.LayoutManager layoutManager;
     public static View contentView;
 
-    private int nro;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

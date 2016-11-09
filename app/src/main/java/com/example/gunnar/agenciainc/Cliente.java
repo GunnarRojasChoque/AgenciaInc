@@ -23,16 +23,14 @@ public class Cliente {
     private String genero;
     public SQLiteDatabase bdCliente;
 
-    public Cliente(String nombres,String apellidos,int celular,int ci,String fechaNac,String correo,String genero){
-        this.nombres=nombres;
-        this.apellidos=apellidos;
-        this.celular=celular;
-        this.ci=ci;
-        this.fechaNac=fechaNac;
-        this.correo=correo;
-        this.genero=genero;
-
-
+    public Cliente(String nombres, String apellidos, int celular, int ci, String fechaNac, String correo, String genero) {
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.celular = celular;
+        this.ci = ci;
+        this.fechaNac = fechaNac;
+        this.correo = correo;
+        this.genero = genero;
 
 
     }

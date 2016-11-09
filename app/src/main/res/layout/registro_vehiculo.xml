@@ -99,22 +99,7 @@
             android:inputType="number" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/tipo_vehiculo"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black" />
-
-        <Spinner
-            android:id="@+id/tipo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:entries="@array/tipe_car"
-            android:scrollbars="none" />
-
-        <TextView
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
@@ -140,6 +125,21 @@
             android:id="@+id/dateNow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/tipo_vehiculo"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <Spinner
+            android:id="@+id/tipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/tipe_car"
+            android:scrollbars="none" />
 
         <TextView
             android:layout_width="match_parent"

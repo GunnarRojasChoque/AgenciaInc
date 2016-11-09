@@ -8,6 +8,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.gunnar.agenciainc.Mains.MainCatalogo;
 import com.example.gunnar.agenciainc.R;
 
+/**
+ * Class for Car
+ * Created by Gunnar on 05/11/2016.
+ */
+
 public class AdapterFragment extends FragmentPagerAdapter {
 
     public AdapterFragment(FragmentManager fragmentManager) {
@@ -45,27 +50,26 @@ public class AdapterFragment extends FragmentPagerAdapter {
         bundle7.putInt("nro", 7);
 
 
-
         Fragment fs = new FragmentAutomovil();
         fs.setArguments(bundle);
 
 
-        Fragment fs2 = new FragmentCamioneta();
+        Fragment fs2 = new FragmentAutomovil();
         fs2.setArguments(bundle2);
 
-        Fragment fg3 = new FragmentJeep();
+        Fragment fg3 = new FragmentAutomovil();
         fg3.setArguments(bundle3);
 
-        Fragment fg4 = new FragmentJeep();
+        Fragment fg4 = new FragmentAutomovil();
         fg4.setArguments(bundle4);
 
-        Fragment fg5 = new FragmentJeep();
+        Fragment fg5 = new FragmentAutomovil();
         fg5.setArguments(bundle5);
 
-        Fragment fg6 = new FragmentJeep();
+        Fragment fg6 = new FragmentAutomovil();
         fg6.setArguments(bundle6);
 
-        Fragment fg7 = new FragmentJeep();
+        Fragment fg7 = new FragmentAutomovil();
         fg7.setArguments(bundle7);
 
         switch (position) {

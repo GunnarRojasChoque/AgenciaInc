@@ -8,12 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
 import com.example.gunnar.agenciainc.FragmentsCatalogo.AdapterFragment;
 import com.example.gunnar.agenciainc.R;
 
-import static com.example.gunnar.agenciainc.Mains.MainActivity.db;
-import static com.example.gunnar.agenciainc.Mains.MainActivity.vehiculo;
+/**
+ * for convert from bitmap to array bitmap.
+ * Created by Gunnar on 4/11/2016.
+ */
 
 public class MainCatalogo extends AppCompatActivity {
 
@@ -54,7 +55,7 @@ public class MainCatalogo extends AppCompatActivity {
 
         viewPager.setAdapter(adapterFragment);
 
-        viewPager.setOffscreenPageLimit(0);
+        viewPager.setOffscreenPageLimit(6);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
