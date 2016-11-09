@@ -68,4 +68,5 @@ public class BDContrato extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONTRATO_EMPLEADO);
         onCreate(db);
     }
+
 }
