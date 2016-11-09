@@ -99,7 +99,6 @@ public class Cliente {
         bdCliente = cliente.getReadableDatabase();
 
         String sql="SELECT * FROM cliente ";
-
         int id=0;
         String nombres=" ";
         String apellidos=" ";
