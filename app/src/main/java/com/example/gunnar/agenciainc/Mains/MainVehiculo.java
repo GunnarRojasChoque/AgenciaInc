@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.gunnar.agenciainc.BaseDeDatos.BDContrato;
 import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
 import com.example.gunnar.agenciainc.R;
 import com.example.gunnar.agenciainc.Vehiculo;
@@ -285,4 +286,27 @@ public class MainVehiculo extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+    private void llenarDatosContrato()
+    {
+        ContentValues values = new ContentValues();
+        values.put(BDContrato.COLUMN_APELLIDO, "");
+        values.put(BDContrato.COLUMN_CARGO, "");
+        values.put(BDContrato.COLUMN_CI, "");
+        values.put(BDContrato.COLUMN_CORREO, "");
+        values.put(BDContrato.COLUMN_DIRECCION, "");
+        values.put(BDContrato.COLUMN_FECHA_FIN, "");
+        values.put(BDContrato.COLUMN_FECHA_INICIO, "");
+        values.put(BDContrato.COLUMN_NACIMIENTO, "");
+        values.put(BDContrato.COLUMN_NOMBRE, "");
+        values.put(BDContrato.COLUMN_CARGO, "");
+        values.put(BDContrato.COLUMN_NOMBRE_EMPLEADOR, "");
+        values.put(BDContrato.COLUMN_PAIS, "");
+        values.put(BDContrato.COLUMN_SALARIO, "");
+        values.put(BDContrato.COLUMN_TELEFONO, "");
+        values.put(BDContrato.DATABASE_CLIENTE, "");
+        values.put(BDContrato.TABLE_CONTRATO_EMPLEADO, "");
+
+
+    }
 }
+

@@ -19,7 +19,7 @@
         <activity android:name=".Mains.MainVehiculo" />
         <activity
             android:name=".Mains.MainCatalogo"
-            android:theme="@style/AppThemeNoAction"></activity>
+            android:theme="@style/AppThemeNoAction" />
     </application>
 
 </manifest>
