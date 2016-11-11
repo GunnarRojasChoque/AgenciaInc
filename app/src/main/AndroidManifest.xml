@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gunnar.agenciainc">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,8 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Mains.MainCliente"></activity>
-        <activity android:name=".Mains.MainVehiculo"></activity>
+        <activity android:name=".Mains.MainCliente" />
+        <activity android:name=".Mains.MainVehiculo" />
         <activity
             android:name=".Mains.MainCatalogo"
             android:theme="@style/AppThemeNoAction"></activity>

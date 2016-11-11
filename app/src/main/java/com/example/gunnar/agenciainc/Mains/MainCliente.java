@@ -3,6 +3,7 @@ package com.example.gunnar.agenciainc.Mains;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,12 +37,14 @@ public class MainCliente extends AppCompatActivity {
     public static RadioButton rb;
     public static int year, month, day;
     public static final int id_dialog = 0;
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_cliente);
 
+        context = this;
         initCalendar();
         initRegistrtoCli();
     }
@@ -131,27 +134,27 @@ public class MainCliente extends AppCompatActivity {
         }
     };
 
-    public void llenarCliente(){
+    public void llenarCliente() {
 
         Cliente client = new Cliente(nombresCli.getText().toString(), apellidosCli.getText().toString(),
                 Integer.valueOf(celularCli.getText().toString()), Integer.valueOf(ciCli.getText().toString()),
                 MainVehiculo.fechaNow.getText().toString(), correoCli.getText().toString(),
                 "Masculino");
 
-        BDCliente baseCliHelper=new BDCliente(this);
-        SQLiteDatabase base= baseCliHelper.getWritableDatabase();
+        BDCliente baseCliHelper = new BDCliente(this);
+        SQLiteDatabase base = baseCliHelper.getWritableDatabase();
 
-        ContentValues contenido=new ContentValues();
+        ContentValues contenido = new ContentValues();
 
-        contenido.put(baseCliHelper.COLUMN_NOMBRE,client.getNombres());
-        contenido.put(baseCliHelper.COLUMN_APELLIDO,client.getApellidos());
-        contenido.put(baseCliHelper.COLUMN_TELEFONO,client.getCelular());
-        contenido.put(baseCliHelper.COLUMN_CI,client.getCi());
-        contenido.put(baseCliHelper.COLUMN_NACIMIENTO,client.getFechaNac());
-        contenido.put(baseCliHelper.COLUMN_CORREO,client.getCorreo());
-        contenido.put(baseCliHelper.COLUMN_SEXO,client.getGenero());
+        contenido.put(baseCliHelper.COLUMN_NOMBRE, client.getNombres());
+        contenido.put(baseCliHelper.COLUMN_APELLIDO, client.getApellidos());
+        contenido.put(baseCliHelper.COLUMN_TELEFONO, client.getCelular());
+        contenido.put(baseCliHelper.COLUMN_CI, client.getCi());
+        contenido.put(baseCliHelper.COLUMN_NACIMIENTO, client.getFechaNac());
+        contenido.put(baseCliHelper.COLUMN_CORREO, client.getCorreo());
+        contenido.put(baseCliHelper.COLUMN_SEXO, client.getGenero());
 
-        long nuevaFila=base.insert(baseCliHelper.TABLE_CLIENTE_IMPORTADORA,null,contenido);
+        long nuevaFila = base.insert(baseCliHelper.TABLE_CLIENTE_IMPORTADORA, null, contenido);
 
         //ContentValues conte=new ContentValues();
         //conte.put(baseCliHelper.COLUMN_ID,nuevaFila);

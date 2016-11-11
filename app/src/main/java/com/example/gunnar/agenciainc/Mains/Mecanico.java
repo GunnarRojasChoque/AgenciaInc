@@ -1,7 +1,6 @@
 package com.example.gunnar.agenciainc.Mains;
 
 
-
 public class Mecanico {
 
     private String nombres;
@@ -13,16 +12,14 @@ public class Mecanico {
     private String genero;
 
 
-    public Mecanico (String nombres,String apellidos,int celular,int ci,String fechaNac,String correo,String genero){
-        this.nombres=nombres;
-        this.apellidos=apellidos;
-        this.celular=celular;
-        this.ci=ci;
-        this.fechaNac=fechaNac;
-        this.correo=correo;
-        this.genero=genero;
-
-
+    public Mecanico(String nombres, String apellidos, int celular, int ci, String fechaNac, String correo, String genero) {
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.celular = celular;
+        this.ci = ci;
+        this.fechaNac = fechaNac;
+        this.correo = correo;
+        this.genero = genero;
 
 
     }

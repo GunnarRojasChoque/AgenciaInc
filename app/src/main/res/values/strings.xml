@@ -53,7 +53,6 @@
     <string name="a_adir_imagen_de_galeria">Añadir Imagen de Galeria</string>
     <string name="tomar_foto">Tomar foto</string>
     <string name="imagen">Imagen</string>
-    <string name="nombre_comprador">Nombre Comprador</string>
 
     <string-array name="tipe_car">
         <item>@string/automovil</item>

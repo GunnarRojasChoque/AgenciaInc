@@ -1,5 +1,13 @@
 package com.example.gunnar.agenciainc;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.example.gunnar.agenciainc.BaseDeDatos.BDCliente;
+import com.example.gunnar.agenciainc.Mains.MainActivity;
+import com.example.gunnar.agenciainc.Mains.MainCatalogo;
+import com.example.gunnar.agenciainc.Mains.MainCliente;
+
 /**
  * Created by alvaro on 02/11/2016.
  */
@@ -13,18 +21,16 @@ public class Cliente {
     private String fechaNac;
     private String correo;
     private String genero;
+    public SQLiteDatabase bdCliente;
 
-
-    public Cliente(String nombres,String apellidos,int celular,int ci,String fechaNac,String correo,String genero){
-        this.nombres=nombres;
-        this.apellidos=apellidos;
-        this.celular=celular;
-        this.ci=ci;
-        this.fechaNac=fechaNac;
-        this.correo=correo;
-        this.genero=genero;
-
-
+    public Cliente(String nombres, String apellidos, int celular, int ci, String fechaNac, String correo, String genero) {
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.celular = celular;
+        this.ci = ci;
+        this.fechaNac = fechaNac;
+        this.correo = correo;
+        this.genero = genero;
 
 
     }
@@ -83,5 +89,23 @@ public class Cliente {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    private void detalleDecliente()
+    {
+        BDCliente cliente = new BDCliente(MainCliente.context);
+        bdCliente = cliente.getReadableDatabase();
+
+        String sql="SELECT * FROM cliente ";
+        int id=0;
+        String nombres=" ";
+        String apellidos=" ";
+        String celular=" ";
+        String fechaNac=" ";
+        String correo=" ";
+        String genero=" ";
+
+        Cursor c = bdCliente.rawQuery(sql, null);
+
     }
 }

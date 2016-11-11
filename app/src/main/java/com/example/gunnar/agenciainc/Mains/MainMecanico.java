@@ -2,14 +2,12 @@ package com.example.gunnar.agenciainc.Mains;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.gunnar.agenciainc.R;
@@ -53,7 +51,7 @@ public class MainMecanico extends AppCompatActivity {
         nombresMec = (EditText) findViewById(R.id.etnombres);
         apellidosMec = (EditText) findViewById(R.id.etapellidos);
         chasis = (EditText) findViewById(R.id.chasis);
-        diagnostico = (EditText) findViewById(R.id.etdiasnostico) ;
+        diagnostico = (EditText) findViewById(R.id.etdiasnostico);
         ciMec = (EditText) findViewById(R.id.etci);
         fechaNow = (TextView) findViewById(R.id.dateNow);
         celularMec = (EditText) findViewById(R.id.etcelular);
@@ -61,26 +59,23 @@ public class MainMecanico extends AppCompatActivity {
         cancelarMec = (Button) findViewById(R.id.btncancelar);
 
 
-
-
         //fechaMec.setOnClickListener(new View.OnClickListener() {
-          //  @Override
+        //  @Override
         //    public void onClick(View view) {
-          //      showDialog(id_dialog);
-            //}
+        //      showDialog(id_dialog);
+        //}
         //});
 
 
+        //   registrarMec.setOnClickListener(new View.OnClickListener() {
+        //       @Override
+        //   public void onClick(View view) {
+        //         Mecanico mec = new Mecanico(nombresMec.getText().toString(), apellidosMec.getText().toString(),
+        //               Integer.valueOf(celularMec.getText().toString()), Integer.valueOf(ciMec.getText().toString()),
+        //                 );
 
-     //   registrarMec.setOnClickListener(new View.OnClickListener() {
-     //       @Override
-         //   public void onClick(View view) {
-       //         Mecanico mec = new Mecanico(nombresMec.getText().toString(), apellidosMec.getText().toString(),
-         //               Integer.valueOf(celularMec.getText().toString()), Integer.valueOf(ciMec.getText().toString()),
-       //                 );
 
-
-         //   }
+        //   }
         //});
 
 

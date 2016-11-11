@@ -15,15 +15,17 @@ import com.example.gunnar.agenciainc.Mains.BitmapConvert;
 import com.example.gunnar.agenciainc.Mains.MainCatalogo;
 
 /**
+ * Adapter for catalogo
  * Created by Gunnar on 4/11/2016.
  */
 
-public class AdapterCatalogo  extends RecyclerView.Adapter<AdapterCatalogo.ViewHolderClass> {
+public class AdapterCatalogo extends RecyclerView.Adapter<AdapterCatalogo.ViewHolderClass> {
 
-    private static final String TAG = AdapterCatalogo.class.getSimpleName();
     private int posItem;
+    private BDVehiculo vehiculo;
+    private SQLiteDatabase db;
 
-    public AdapterCatalogo(int nro){
+    public AdapterCatalogo(int nro) {
         this.posItem = nro;
     }
 
@@ -33,8 +35,12 @@ public class AdapterCatalogo  extends RecyclerView.Adapter<AdapterCatalogo.ViewH
         ImageView background;
         TextView marca;
         TextView modelo;
+
         public ViewHolderClass(View itemView) {
             super(itemView);
+
+            vehiculo = new BDVehiculo(MainCatalogo.context);
+            db = vehiculo.getReadableDatabase();
 
             modelo = (TextView) itemView.findViewById(R.id.modelo_name);
             marca = (TextView) itemView.findViewById(R.id.marca_name);
@@ -53,63 +59,43 @@ public class AdapterCatalogo  extends RecyclerView.Adapter<AdapterCatalogo.ViewH
     @Override
     public void onBindViewHolder(ViewHolderClass holder, int position) {
 
-        try {
-            switch (posItem){
-                case 1:
-
-                    BDVehiculo vehiculo = new BDVehiculo(MainCatalogo.context);
-                    SQLiteDatabase db = vehiculo.getReadableDatabase();
-
-                    String[] projection = {
-                            vehiculo.COLUMN_MODELO,
-                            vehiculo.COLUMN_MARCA,
-                            vehiculo.COLUMN_IMAGEN
-                    };
-
-
-                    String selection = vehiculo.COLUMN_ID + " = ?";
-                    String[] selectionArgs = { position + 1 + "" };
-
-                    Cursor c = db.query(
-                            vehiculo.TABLE_VEHICULO_IMPORTADORA,
-                            projection,
-                            selection,
-                            selectionArgs,
-                            null,
-                            null,
-                            null
-                    );
-
-                    if(c.moveToFirst()){
-                        do {
-                            holder.marca.setText(c.getString(c.getColumnIndexOrThrow(vehiculo.COLUMN_MARCA)));
-                            holder.modelo.setText(c.getString(c.getColumnIndexOrThrow(vehiculo.COLUMN_MODELO)));
-
-                            BitmapConvert convert = new BitmapConvert();
-                            Bitmap bitmap = convert.getImage(c.getBlob(c.getColumnIndexOrThrow(vehiculo.COLUMN_IMAGEN)));
-
-                            holder.background.setImageBitmap(bitmap);
-                        }while (c.moveToNext());
-                    }
-            }
-        }catch (Exception e){e.printStackTrace();}
-
-
-    }
-
-    private int sizeBD(){
-        BDVehiculo vehiculo = new BDVehiculo(MainCatalogo.context);
-        SQLiteDatabase db = vehiculo.getReadableDatabase();
-
         String[] projection = {
-                vehiculo.COLUMN_ID,
+                BDVehiculo.COLUMN_MODELO,
+                BDVehiculo.COLUMN_MARCA,
+                BDVehiculo.COLUMN_IMAGEN,
+                BDVehiculo.COLUMN_TIPO
         };
 
-        String sortOrder =
-                vehiculo.COLUMN_ID + " DESC";
+        String selection = BDVehiculo.COLUMN_ID + " = ?" + " AND " + BDVehiculo.COLUMN_TIPO + " =?";
+        String[] selectionArgs = null;
 
-        String selection = vehiculo.COLUMN_TIPO + " = ?";
-        String[] selectionArgs = { "Automovil" };
+        try {
+            switch (posItem) {
+                case 1:
+                    selectionArgs = new String[]{(position + ""), MainCatalogo.context.getString(R.string.automovil)};
+                    break;
+                case 2:
+                    selectionArgs = new String[]{(position + ""), MainCatalogo.context.getString(R.string.vagoneta)};
+                    break;
+                case 3:
+                    selectionArgs = new String[]{(position + ""), MainCatalogo.context.getString(R.string.jepp)};
+                    break;
+                case 4:
+                    selectionArgs = new String[]{(position + ""), MainCatalogo.context.getString(R.string.camioneta)};
+                    break;
+                case 5:
+                    selectionArgs = new String[]{(position + ""), MainCatalogo.context.getString(R.string.minibus)};
+                    break;
+                case 6:
+                    selectionArgs = new String[]{(position + ""), MainCatalogo.context.getString(R.string.trailer)};
+                    break;
+                case 7:
+                    selectionArgs = new String[]{(position + ""), MainCatalogo.context.getString(R.string.motocicleta_name)};
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Cursor c = db.query(
                 vehiculo.TABLE_VEHICULO_IMPORTADORA,
@@ -118,13 +104,70 @@ public class AdapterCatalogo  extends RecyclerView.Adapter<AdapterCatalogo.ViewH
                 selectionArgs,
                 null,
                 null,
-                sortOrder
+                null
         );
 
-        return c.getColumnCount();
+        if (c.moveToFirst()) {
+            do {
+                holder.marca.setText(c.getString(c.getColumnIndexOrThrow(vehiculo.COLUMN_MARCA)));
+                holder.modelo.setText(c.getString(c.getColumnIndexOrThrow(vehiculo.COLUMN_MODELO)));
+
+                BitmapConvert convert = new BitmapConvert();
+                Bitmap bitmap = convert.getImage(c.getBlob(c.getColumnIndexOrThrow(vehiculo.COLUMN_IMAGEN)));
+
+                holder.background.setImageBitmap(bitmap);
+            } while (c.moveToNext());
+        }
+
     }
+
+
+    private int sizeBD(String cad) {
+        BDVehiculo vehiculo = new BDVehiculo(MainCatalogo.context);
+        SQLiteDatabase db = vehiculo.getReadableDatabase();
+
+        String[] projection = {
+                vehiculo.COLUMN_ID,
+        };
+
+        String selection = vehiculo.COLUMN_TIPO + " = ?";
+        String[] selectionArgs = {cad};
+
+        Cursor c = db.query(
+                vehiculo.TABLE_VEHICULO_IMPORTADORA,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        return c.getCount();
+    }
+
+    private int getID(int posItem) {
+        switch (posItem) {
+            case 1:
+                return sizeBD(MainCatalogo.context.getString(R.string.automovil));
+            case 2:
+                return sizeBD(MainCatalogo.context.getString(R.string.vagoneta));
+            case 3:
+                return sizeBD(MainCatalogo.context.getString(R.string.jepp));
+            case 4:
+                return sizeBD(MainCatalogo.context.getString(R.string.camioneta));
+            case 5:
+                return sizeBD(MainCatalogo.context.getString(R.string.minibus));
+            case 6:
+                return sizeBD(MainCatalogo.context.getString(R.string.trailer));
+            case 7:
+                return sizeBD(MainCatalogo.context.getString(R.string.motocicleta_name));
+            default:
+                return 0;
+        }
+    }
+
     @Override
     public int getItemCount() {
-        return 2;
+        return getID(posItem);
     }
 }
