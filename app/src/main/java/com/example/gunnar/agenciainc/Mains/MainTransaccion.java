@@ -91,18 +91,18 @@ public class MainTransaccion extends AppCompatActivity {
     }
 
     private void initRegistrtoCli() {
-
-        comprador = (EditText) findViewById(R.id.comprador);
-        vendedor = (EditText) findViewById(R.id.vendedor);
-        modelo = (EditText) findViewById(R.id.modelos);
-        descuento = (EditText) findViewById(R.id.descuentos);
-        precioTotal = (EditText) findViewById(R.id.precioTotal);
-        numeroImport = (EditText) findViewById(R.id.numeroImport);
-        fechaTra = (Button) findViewById(R.id.fechaTra);
-        ciudad = (EditText) findViewById(R.id.ciudad);
-
-        registroTra = (Button) findViewById(R.id.registrarse);
-        cancelarTra = (Button) findViewById(R.id.cancelar);
+//
+//        comprador = (EditText) findViewById(R.id.comprador);
+//        vendedor = (EditText) findViewById(R.id.vendedor);
+//        modelo = (EditText) findViewById(R.id.modelos);
+//        descuento = (EditText) findViewById(R.id.descuentos);
+//        precioTotal = (EditText) findViewById(R.id.precioTotal);
+//        numeroImport = (EditText) findViewById(R.id.numeroImport);
+//        fechaTra = (Button) findViewById(R.id.fechaTra);
+//        ciudad = (EditText) findViewById(R.id.ciudad);
+//
+//        registroTra = (Button) findViewById(R.id.registrarse);
+//        cancelarTra = (Button) findViewById(R.id.cancelar);
 
 
         MainTransaccion.fechaNow = (TextView) findViewById(R.id.tvfecha);
