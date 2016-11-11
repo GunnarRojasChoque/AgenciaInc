@@ -79,6 +79,7 @@ public class MainTransaccion extends AppCompatActivity {
 
         initCalendar();
         initRegistrtoCli();
+
     }
 
 
