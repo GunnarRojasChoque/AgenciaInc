@@ -47,6 +47,7 @@ public class MainVehiculo extends AppCompatActivity {
 
     ImageView bitma;
     public Bitmap bitmap;
+
     public int year, month, day;
     // Dialog Date.
     int id_dialog = 0;

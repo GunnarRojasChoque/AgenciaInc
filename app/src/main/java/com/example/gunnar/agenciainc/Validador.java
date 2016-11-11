@@ -81,7 +81,7 @@ public abstract class Validador extends Context implements TextWatcher
         }
     }
     public boolean placaV(String placa){
-        String expression =  "(^[A-Za-z]{0,4})*([0-9]{3,})$";//cmo maximo 4 char letra y despues como minimo 3 char numero
+        String expression =  "(^[A-Za-z]{3,4})$*([0-9]{3,4})$";//cmo maximo 4 char letra y despues como minimo 3 char numero
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(placa);
            if (matcher.find()) {
@@ -92,7 +92,7 @@ public abstract class Validador extends Context implements TextWatcher
         }
     }
     public boolean precioV(String precio){
-        String expression =  "([0-9]{10,})$";//precios de V solo numeros
+        String expression =  "(^[0-9]{2,6})$";//precios de V solo numeros
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(precio);
         if (matcher.find()) {
@@ -104,7 +104,7 @@ public abstract class Validador extends Context implements TextWatcher
     }
 
     public boolean anioV(String anio){
-        String exprecion = "^[0-9]";
+        String exprecion = "^[0-9]{4,4})$";
         Pattern p = Pattern.compile(exprecion);
         Matcher m = p.matcher(anio) ;
         if (m.find()){
