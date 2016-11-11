@@ -12,16 +12,16 @@ import android.util.Log;
 public class BDTransaccion extends SQLiteOpenHelper {
     private static final String TAG = BDTransaccion.class.getSimpleName();
 
-    private static final String TABLE_FORMULARIO_TRANSACCION = "transaccion";
-    private static final String COLUMN_ID = "_id";
-    private static final String COLUMN_COMPRADOR = "comprador";
-    private static final String COLUMN_VENDEDOR = "vendedor";
-    private static final String COLUMN_MODELO = "modelo";
-    private static final String COLUMN_DESCUENTO = "descuento";
-    private static final String COLUMN_PRECIOTOTAL = "precio_total";
-    private static final String COLUMN_NUMERO_IMPORTACION = "numero_importacion";
-    private static final String COLUMN_FECHA = "fecha";
-    private static final String COLUMN_CIUDAD = "ciudad";
+    public static final String TABLE_FORMULARIO_TRANSACCION = "transaccion";
+    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_COMPRADOR = "comprador";
+    public static final String COLUMN_VENDEDOR = "vendedor";
+    public static final String COLUMN_MODELO = "modelo";
+    public static final String COLUMN_DESCUENTO = "descuento";
+    public static final String COLUMN_PRECIOTOTAL = "precio_total";
+    public static final String COLUMN_NUMERO_IMPORTACION = "numero_importacion";
+    public static final String COLUMN_FECHA = "fecha";
+    public static final String COLUMN_CIUDAD = "ciudad";
 
     private static final String DATABASE_TRANSACCION = "BaseDatosTransaccion.db";
     private static final int DATABASE_VERSION = 1;
@@ -39,9 +39,7 @@ public class BDTransaccion extends SQLiteOpenHelper {
             + COLUMN_CIUDAD + " TEXT NOT NULL );";
 
 
-    public BDTransaccion(Context context) {
-        super(context, DATABASE_TRANSACCION, null, DATABASE_VERSION);
-    }
+    public BDTransaccion(Context context) { super(context, DATABASE_TRANSACCION, null, DATABASE_VERSION);}
 
     @Override
     public void onCreate(SQLiteDatabase db) {

@@ -53,19 +53,6 @@
     <string name="a_adir_imagen_de_galeria">Añadir Imagen de Galeria</string>
     <string name="tomar_foto">Tomar foto</string>
     <string name="imagen">Imagen</string>
-    <string name="_22_06_1986">22/06/1986</string>
-    <string name="direccion">Direccion</string>
-    <string name="fake123">Fake123</string>
-    <string name="fecha_de_comienzo">Fecha de Comienzo</string>
-    <string name="fecha_fin">Fecha Fin</string>
-    <string name="pais">Pais</string>
-    <string name="nombre_empleador">Nombre Empleador</string>
-    <string name="cargo">Cargo</string>
-    <string name="vendedor">Vendedor</string>
-    <string name="bolivia">Bolivia</string>
-    <string name="salario">Salario</string>
-    <string name="_5000">5000$</string>
-    <string name="registro_de_contrato">registro de contrato</string>
 
     <string-array name="tipe_car">
         <item>@string/automovil</item>
