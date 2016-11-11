@@ -305,7 +305,7 @@ public class MainVehiculo extends AppCompatActivity {
         values.put(BDContrato.COLUMN_TELEFONO, "");
         values.put(BDContrato.DATABASE_CLIENTE, "");
         values.put(BDContrato.TABLE_CONTRATO_EMPLEADO, "");
-
+        values.put(BDContrato.COLUMN_ID, "");
 
     }
 }
