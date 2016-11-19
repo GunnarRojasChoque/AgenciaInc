@@ -1,40 +1,27 @@
 package com.example.gunnar.agenciainc.Mains;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDTransaccion;
 import com.example.gunnar.agenciainc.R;
 import com.example.gunnar.agenciainc.Transaccion;
 
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Calendar;
 
-import static android.content.ContentValues.TAG;
-import static com.example.gunnar.agenciainc.R.id.tipo;
-import static com.example.gunnar.agenciainc.R.string.caracteristicas;
-
 /**
+ *
  * Created by Max on 10/11/2016.
  */
 
@@ -93,14 +80,14 @@ public class MainTransaccion extends AppCompatActivity {
 
     private void initRegistrtoCli() {
 //
-          comprador = (EditText) findViewById(R.id.comprador);
-          vendedor = (EditText) findViewById(R.id.vendedor);
-          modelo = (EditText) findViewById(R.id.modelo);
-          descuento = (EditText) findViewById(R.id.descuento);
-          precioTotal = (EditText) findViewById(R.id.precioTotal);
-          numeroImport = (EditText) findViewById(R.id.numeroImport);
-          fechaTra = (Button) findViewById(R.id.fechaTra);
-          ciudad = (EditText) findViewById(R.id.ciudad);
+//          comprador = (EditText) findViewById(R.id.comprador);
+//          vendedor = (EditText) findViewById(R.id.vendedor);
+//          modelo = (EditText) findViewById(R.id.modelo);
+//          descuento = (EditText) findViewById(R.id.descuento);
+//          precioTotal = (EditText) findViewById(R.id.precioTotal);
+//          numeroImport = (EditText) findViewById(R.id.numeroImport);
+//          fechaTra = (Button) findViewById(R.id.fechaTra);
+//          ciudad = (EditText) findViewById(R.id.ciudad);
 //
 //        registroTra = (Button) findViewById(R.id.registrarse);
 //        cancelarTra = (Button) findViewById(R.id.cancelar);

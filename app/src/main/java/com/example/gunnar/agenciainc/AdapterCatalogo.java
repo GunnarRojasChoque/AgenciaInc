@@ -1,5 +1,6 @@
 package com.example.gunnar.agenciainc;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -11,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
+import com.example.gunnar.agenciainc.FragmentsCatalogo.MainDetalleVehiculo;
 import com.example.gunnar.agenciainc.Mains.BitmapConvert;
+import com.example.gunnar.agenciainc.Mains.MainActivity;
 import com.example.gunnar.agenciainc.Mains.MainCatalogo;
 
 /**
@@ -22,24 +25,26 @@ import com.example.gunnar.agenciainc.Mains.MainCatalogo;
 public class AdapterCatalogo extends RecyclerView.Adapter<AdapterCatalogo.ViewHolderClass> {
 
     private int posItem;
-    private BDVehiculo vehiculo;
     private SQLiteDatabase db;
+    private String[] projection;
+    private String selection;
+    private String[] selectionArgs;
 
     public AdapterCatalogo(int nro) {
         this.posItem = nro;
     }
 
 
-    public class ViewHolderClass extends RecyclerView.ViewHolder {
+    class ViewHolderClass extends RecyclerView.ViewHolder {
 
         ImageView background;
         TextView marca;
         TextView modelo;
 
-        public ViewHolderClass(View itemView) {
+        ViewHolderClass(View itemView) {
             super(itemView);
 
-            vehiculo = new BDVehiculo(MainCatalogo.context);
+            BDVehiculo vehiculo = new BDVehiculo(MainActivity.context);
             db = vehiculo.getReadableDatabase();
 
             modelo = (TextView) itemView.findViewById(R.id.modelo_name);
@@ -59,15 +64,21 @@ public class AdapterCatalogo extends RecyclerView.Adapter<AdapterCatalogo.ViewHo
     @Override
     public void onBindViewHolder(ViewHolderClass holder, int position) {
 
-        String[] projection = {
+        projection = new String[]{
                 BDVehiculo.COLUMN_MODELO,
                 BDVehiculo.COLUMN_MARCA,
+                BDVehiculo.COLUMN_CHASIS,
+                BDVehiculo.COLUMN_ANIO,
+                BDVehiculo.COLUMN_PRECIO,
+                BDVehiculo.COLUMN_POTENCIA,
+                BDVehiculo.COLUMN_FECHA,
                 BDVehiculo.COLUMN_IMAGEN,
-                BDVehiculo.COLUMN_TIPO
+                BDVehiculo.COLUMN_TIPO,
+                BDVehiculo.COLUMN_CARACTERISTICAS
         };
 
-        String selection = BDVehiculo.COLUMN_ID + " = ?" + " AND " + BDVehiculo.COLUMN_TIPO + " =?";
-        String[] selectionArgs = null;
+        selection = BDVehiculo.COLUMN_ID + " = ?" + " AND " + BDVehiculo.COLUMN_TIPO + " =?";
+        selectionArgs = null;
 
         try {
             switch (posItem) {
@@ -98,7 +109,7 @@ public class AdapterCatalogo extends RecyclerView.Adapter<AdapterCatalogo.ViewHo
         }
 
         Cursor c = db.query(
-                vehiculo.TABLE_VEHICULO_IMPORTADORA,
+                BDVehiculo.TABLE_VEHICULO_IMPORTADORA,
                 projection,
                 selection,
                 selectionArgs,
@@ -109,15 +120,50 @@ public class AdapterCatalogo extends RecyclerView.Adapter<AdapterCatalogo.ViewHo
 
         if (c.moveToFirst()) {
             do {
-                holder.marca.setText(c.getString(c.getColumnIndexOrThrow(vehiculo.COLUMN_MARCA)));
-                holder.modelo.setText(c.getString(c.getColumnIndexOrThrow(vehiculo.COLUMN_MODELO)));
+                holder.marca.setText(c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_MARCA)));
+                holder.modelo.setText(c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_MODELO)));
 
                 BitmapConvert convert = new BitmapConvert();
-                Bitmap bitmap = convert.getImage(c.getBlob(c.getColumnIndexOrThrow(vehiculo.COLUMN_IMAGEN)));
+                Bitmap bitmap = convert.getImage(c.getBlob(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_IMAGEN)));
 
                 holder.background.setImageBitmap(bitmap);
             } while (c.moveToNext());
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cursor c = db.query(
+                        BDVehiculo.TABLE_VEHICULO_IMPORTADORA,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        null
+                );
+
+                if(c.moveToNext()){
+                    do {
+
+                        Intent intent = new Intent(MainCatalogo.context, MainDetalleVehiculo.class);
+                        intent.putExtra("modelo", c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_MODELO)));
+                        intent.putExtra("marca", c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_MARCA)));
+                        intent.putExtra("chasis", c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_CHASIS)));
+                        intent.putExtra("anio", c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_ANIO)));
+                        intent.putExtra("precio", c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_PRECIO)));
+                        intent.putExtra("potencia", c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_POTENCIA)));
+                        intent.putExtra("fecha", c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_FECHA)));
+                        intent.putExtra("imagen", c.getBlob(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_IMAGEN)));
+                        intent.putExtra("tipo", c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_TIPO)));
+                        intent.putExtra("caracteristicas", c.getString(c.getColumnIndexOrThrow(BDVehiculo.COLUMN_CARACTERISTICAS)));
+
+                        MainCatalogo.context.startActivity(intent);
+
+                    }while (c.moveToNext());
+                }
+            }
+        });
 
     }
 
@@ -148,19 +194,19 @@ public class AdapterCatalogo extends RecyclerView.Adapter<AdapterCatalogo.ViewHo
     private int getID(int posItem) {
         switch (posItem) {
             case 1:
-                return sizeBD(MainCatalogo.context.getString(R.string.automovil));
+                return sizeBD(MainActivity.context.getString(R.string.automovil));
             case 2:
-                return sizeBD(MainCatalogo.context.getString(R.string.vagoneta));
+                return sizeBD(MainActivity.context.getString(R.string.vagoneta));
             case 3:
-                return sizeBD(MainCatalogo.context.getString(R.string.jepp));
+                return sizeBD(MainActivity.context.getString(R.string.jepp));
             case 4:
-                return sizeBD(MainCatalogo.context.getString(R.string.camioneta));
+                return sizeBD(MainActivity.context.getString(R.string.camioneta));
             case 5:
-                return sizeBD(MainCatalogo.context.getString(R.string.minibus));
+                return sizeBD(MainActivity.context.getString(R.string.minibus));
             case 6:
-                return sizeBD(MainCatalogo.context.getString(R.string.trailer));
+                return sizeBD(MainActivity.context.getString(R.string.trailer));
             case 7:
-                return sizeBD(MainCatalogo.context.getString(R.string.motocicleta_name));
+                return sizeBD(MainActivity.context.getString(R.string.motocicleta_name));
             default:
                 return 0;
         }

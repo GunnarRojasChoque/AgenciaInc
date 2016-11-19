@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button registroV;
     private Button registroCL;
     private Button catalogo;
-    private static Context context;
+    public static Context context;
     private static final String TAG = MainActivity.class.getName();
 
     @Override

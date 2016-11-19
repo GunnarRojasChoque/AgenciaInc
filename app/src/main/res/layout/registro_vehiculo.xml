@@ -99,9 +99,24 @@
             android:inputType="number" />
 
         <TextView
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/potencia"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/potencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/_125_hp"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/caracteristicas"
             android:textAllCaps="true"
@@ -124,11 +139,13 @@
         <TextView
             android:id="@+id/dateNow"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/_22_06_1986" />
+
         <TextView
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/tipo_vehiculo"
             android:textAllCaps="true"
@@ -138,6 +155,7 @@
             android:id="@+id/tipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="6dp"
             android:entries="@array/tipe_car"
             android:scrollbars="none" />
 
@@ -151,10 +169,10 @@
             android:textColor="@android:color/black" />
 
         <ImageView
-            android:layout_marginTop="5dp"
             android:id="@+id/add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

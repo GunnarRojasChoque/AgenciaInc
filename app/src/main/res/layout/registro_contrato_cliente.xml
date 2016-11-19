@@ -5,6 +5,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:layout_margin="16dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -14,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="@string/registro_de_contrato"
+            android:text="@string/registro_cont"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
@@ -94,12 +95,12 @@
             android:id="@+id/direccion_contrato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/fake123" />
+            android:hint="@string/calle_fake_123" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fecha_de_comienzo" />
+            android:text="@string/fecha_de_nacimiento" />
 
         <EditText
             android:id="@+id/fechaIni"
@@ -110,7 +111,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fecha_fin" />
+            android:text="@string/fecha_final" />
 
         <EditText
             android:id="@+id/fechaFin"
@@ -143,7 +144,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cargo" />
+            android:text="@string/carga" />
 
         <EditText
             android:id="@+id/vendedor"
@@ -160,7 +161,7 @@
             android:id="@+id/salario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/_5000" />
+            android:hint="@string/_453213" />
 
         <LinearLayout
             android:layout_width="match_parent"

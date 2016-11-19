@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
+ * BD
  * Created by Max on 04/11/2016.
  */
 
@@ -35,11 +36,13 @@ public class BDTransaccion extends SQLiteOpenHelper {
             + COLUMN_DESCUENTO + " INT NOT NULL, "
             + COLUMN_PRECIOTOTAL + " TEXT NOT NULL, "
             + COLUMN_NUMERO_IMPORTACION + " TEXT NOT NULL, "
-            + COLUMN_FECHA + " TEXT NOT NULL"
-            + COLUMN_CIUDAD + " TEXT NOT NULL );";
+            + COLUMN_FECHA + " TEXT NOT NULL, "
+            + COLUMN_CIUDAD + " TEXT NOT NULL);";
 
 
-    public BDTransaccion(Context context) { super(context, DATABASE_TRANSACCION, null, DATABASE_VERSION);}
+    public BDTransaccion(Context context) {
+        super(context, DATABASE_TRANSACCION, null, DATABASE_VERSION);
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {

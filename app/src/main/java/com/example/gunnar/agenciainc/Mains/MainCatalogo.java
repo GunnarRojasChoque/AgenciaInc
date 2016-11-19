@@ -33,8 +33,6 @@ public class MainCatalogo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_catalogo);
 
-
-
         context = this;
         initToolbar();
         initViewPager();

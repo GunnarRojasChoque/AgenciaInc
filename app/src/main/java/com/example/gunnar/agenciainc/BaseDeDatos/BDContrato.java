@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
+ * BD
  * Created by alvaro on 08/11/2016.
  */
 
@@ -35,7 +36,7 @@ public class BDContrato extends SQLiteOpenHelper {
 
     //Setencia SQL para crear la base de datos
     private static final String DATABASE_CREATE = "CREATE TABLE "
-            + TABLE_CONTRATO_EMPLEADO + "(" + COLUMN_ID + " TEXT PRIMARY KEY,"
+            + TABLE_CONTRATO_EMPLEADO + " (" + COLUMN_ID + " TEXT PRIMARY KEY,"
             + COLUMN_NOMBRE_EMPLEADOR + " TEXT NOT NULL, "
             + COLUMN_NOMBRE + " TEXT NOT NULL, "
             + COLUMN_APELLIDO + " TEXT NOT NULL, "
@@ -46,10 +47,9 @@ public class BDContrato extends SQLiteOpenHelper {
             + COLUMN_DIRECCION + " TEXT NOT NULL, "
             + COLUMN_PAIS + " TEXT NOT NULL, "
             + COLUMN_FECHA_INICIO + " TEXT NOT NULL, "
-            + COLUMN_FECHA_FIN + " TEXT NOT NULL,"
-            + COLUMN_CARGO + "TEXT NOT NULL, "
+            + COLUMN_FECHA_FIN + " TEXT NOT NULL, "
+            + COLUMN_CARGO + " TEXT NOT NULL, "
             + COLUMN_SALARIO + " TEXT NOT NULL );";
-
 
 
     public BDContrato(Context context) {

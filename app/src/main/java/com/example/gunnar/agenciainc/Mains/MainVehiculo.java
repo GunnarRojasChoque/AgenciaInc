@@ -45,6 +45,7 @@ public class MainVehiculo extends AppCompatActivity {
     EditText chasis;
     EditText anio;
     EditText precio;
+    EditText potencia;
     Spinner tipo;
     EditText caracteristicas;
     public static TextView fechaNow;
@@ -91,6 +92,7 @@ public class MainVehiculo extends AppCompatActivity {
         tipo = (Spinner) findViewById(R.id.tipo);
         caracteristicas = (EditText) findViewById(R.id.carac);
         precio = (EditText) findViewById(R.id.precio);
+        potencia = (EditText) findViewById(R.id.potencia);
         fechaNow = (TextView) findViewById(R.id.dateNow);
         registro = (Button) findViewById(R.id.registrar);
         cancelar = (Button) findViewById(R.id.Cancelar);
@@ -136,6 +138,7 @@ public class MainVehiculo extends AppCompatActivity {
         anio.setText("");
         fechaNow.setText("");
         precio.setText("");
+        potencia.setText("");
         caracteristicas.setText("");
     }
 
@@ -160,16 +163,17 @@ public class MainVehiculo extends AppCompatActivity {
 
 
         ContentValues values = new ContentValues();
-        values.put(bdVehiculo.COLUMN_ID, res);
-        values.put(bdVehiculo.COLUMN_MODELO, vehiculo.getModelo());
-        values.put(bdVehiculo.COLUMN_MARCA, vehiculo.getMarca());
-        values.put(bdVehiculo.COLUMN_CHASIS, vehiculo.getChasis());
-        values.put(bdVehiculo.COLUMN_ANIO, vehiculo.getAño());
-        values.put(bdVehiculo.COLUMN_PRECIO, vehiculo.getPrecioIni());
-        values.put(bdVehiculo.COLUMN_FECHA, vehiculo.getFechaIngreso());
-        values.put(bdVehiculo.COLUMN_TIPO, tipo.getSelectedItem().toString());
-        values.put(bdVehiculo.COLUMN_CARACTERISTICAS, caracteristicas.getText().toString());
-        values.put(bdVehiculo.COLUMN_IMAGEN, bytes);
+        values.put(BDVehiculo.COLUMN_ID, res);
+        values.put(BDVehiculo.COLUMN_MODELO, vehiculo.getModelo());
+        values.put(BDVehiculo.COLUMN_MARCA, vehiculo.getMarca());
+        values.put(BDVehiculo.COLUMN_CHASIS, vehiculo.getChasis());
+        values.put(BDVehiculo.COLUMN_ANIO, vehiculo.getAño());
+        values.put(BDVehiculo.COLUMN_PRECIO, vehiculo.getPrecioIni());
+        values.put(BDVehiculo.COLUMN_POTENCIA, potencia.getText().toString());
+        values.put(BDVehiculo.COLUMN_FECHA, vehiculo.getFechaIngreso());
+        values.put(BDVehiculo.COLUMN_TIPO, tipo.getSelectedItem().toString());
+        values.put(BDVehiculo.COLUMN_CARACTERISTICAS, caracteristicas.getText().toString());
+        values.put(BDVehiculo.COLUMN_IMAGEN, bytes);
 
         long newRowId = database.insert(BDVehiculo.TABLE_VEHICULO_IMPORTADORA, null, values);
 
