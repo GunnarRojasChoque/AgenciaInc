@@ -29,11 +29,11 @@ public class BDTransaccion extends SQLiteOpenHelper {
 
     //Setencia SQL para crear la base de datos
     private static final String DATABASE_CREATE = "CREATE TABLE "
-            + TABLE_FORMULARIO_TRANSACCION + " (" + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
+            + TABLE_FORMULARIO_TRANSACCION + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_COMPRADOR + " TEXT NOT NULL, "
             + COLUMN_VENDEDOR + " TEXT NOT NULL, "
-            + COLUMN_MODELO + " INT NOT NULL, "
-            + COLUMN_DESCUENTO + " INT NOT NULL, "
+            + COLUMN_MODELO + " INTEGER NOT NULL, "
+            + COLUMN_DESCUENTO + " INTEGER NOT NULL, "
             + COLUMN_PRECIOTOTAL + " TEXT NOT NULL, "
             + COLUMN_NUMERO_IMPORTACION + " TEXT NOT NULL, "
             + COLUMN_FECHA + " TEXT NOT NULL, "

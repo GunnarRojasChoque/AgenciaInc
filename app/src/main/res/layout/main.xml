@@ -30,10 +30,10 @@
         android:text="@string/catalgo_vehiculos" />
 
     <Button
-        android:text="DETALLE VEHICULO"
-        android:layout_width="172dp"
+        android:text="@string/diagnostico"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnDetalleV" />
+        android:id="@+id/diagnostico" />
 
     <Button
         android:id="@+id/activity_main_busqueda"

@@ -36,7 +36,7 @@ public class BDContrato extends SQLiteOpenHelper {
 
     //Setencia SQL para crear la base de datos
     private static final String DATABASE_CREATE = "CREATE TABLE "
-            + TABLE_CONTRATO_EMPLEADO + " (" + COLUMN_ID + " TEXT PRIMARY KEY,"
+            + TABLE_CONTRATO_EMPLEADO + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_NOMBRE_EMPLEADOR + " TEXT NOT NULL, "
             + COLUMN_NOMBRE + " TEXT NOT NULL, "
             + COLUMN_APELLIDO + " TEXT NOT NULL, "

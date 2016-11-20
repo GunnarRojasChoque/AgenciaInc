@@ -5,8 +5,8 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -89,13 +89,8 @@ public class MainCliente extends AppCompatActivity {
         registrarCli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Cliente client = new Cliente(nombresCli.getText().toString(), apellidosCli.getText().toString(),
-                        Integer.valueOf(celularCli.getText().toString()), Integer.valueOf(ciCli.getText().toString()),
-                        fechaCli.getText().toString(), correoCli.getText().toString(), rb.getText().toString());
-                */
                 llenarCliente();
-
-
+                vaciar();
             }
         });
 
@@ -103,16 +98,19 @@ public class MainCliente extends AppCompatActivity {
         cancelarCli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nombresCli.setText("");
-                apellidosCli.setText("");
-                ciCli.setText("");
-                fechaCli.setText("");
-                correoCli.setText("");
-                celularCli.setText("");
-
+                vaciar();
             }
         });
 
+    }
+
+    private void vaciar(){
+        nombresCli.setText("");
+        apellidosCli.setText("");
+        ciCli.setText("");
+        fechaCli.setText("");
+        correoCli.setText("");
+        celularCli.setText("");
     }
 
     @Override
@@ -146,13 +144,13 @@ public class MainCliente extends AppCompatActivity {
 
         ContentValues contenido = new ContentValues();
 
-        contenido.put(baseCliHelper.COLUMN_NOMBRE, client.getNombres());
-        contenido.put(baseCliHelper.COLUMN_APELLIDO, client.getApellidos());
-        contenido.put(baseCliHelper.COLUMN_TELEFONO, client.getCelular());
-        contenido.put(baseCliHelper.COLUMN_CI, client.getCi());
-        contenido.put(baseCliHelper.COLUMN_NACIMIENTO, client.getFechaNac());
-        contenido.put(baseCliHelper.COLUMN_CORREO, client.getCorreo());
-        contenido.put(baseCliHelper.COLUMN_SEXO, client.getGenero());
+        contenido.put(BDCliente.COLUMN_NOMBRE, client.getNombres());
+        contenido.put(BDCliente.COLUMN_APELLIDO, client.getApellidos());
+        contenido.put(BDCliente.COLUMN_TELEFONO, client.getCelular());
+        contenido.put(BDCliente.COLUMN_CI, client.getCi());
+        contenido.put(BDCliente.COLUMN_NACIMIENTO, client.getFechaNac());
+        contenido.put(BDCliente.COLUMN_CORREO, client.getCorreo());
+        contenido.put(BDCliente.COLUMN_SEXO, client.getGenero());
 
         long nuevaFila = base.insert(baseCliHelper.TABLE_CLIENTE_IMPORTADORA, null, contenido);
 

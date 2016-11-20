@@ -4,11 +4,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDCliente;
-import com.example.gunnar.agenciainc.Mains.MainActivity;
-import com.example.gunnar.agenciainc.Mains.MainCatalogo;
 import com.example.gunnar.agenciainc.Mains.MainCliente;
 
 /**
+ *
  * Created by alvaro on 02/11/2016.
  */
 
@@ -30,6 +29,7 @@ public class Cliente {
         this.ci = ci;
         this.fechaNac = fechaNac;
         this.correo = correo;
+
         this.genero = genero;
 
 

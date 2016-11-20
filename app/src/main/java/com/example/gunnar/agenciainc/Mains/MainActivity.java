@@ -15,9 +15,6 @@ import com.example.gunnar.agenciainc.R;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private Button registroV;
-    private Button registroCL;
-    private Button catalogo;
     public static Context context;
     private static final String TAG = MainActivity.class.getName();
 
@@ -26,13 +23,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         context = this;
+
         initView();
     }
 
     private void initView() {
-        registroV = (Button) findViewById(R.id.registroV);
-        registroCL = (Button) findViewById(R.id.registroCl);
-        catalogo = (Button) findViewById(R.id.catalogo);
+        Button registroV = (Button) findViewById(R.id.registroV);
+        Button registroCL = (Button) findViewById(R.id.registroCl);
+        Button catalogo = (Button) findViewById(R.id.catalogo);
+        Button diagnostico = (Button) findViewById(R.id.diagnostico);
 
         registroV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MainCatalogo.class);
+                startActivity(intent);
+            }
+        });
+
+        diagnostico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MainMecanico.class);
                 startActivity(intent);
             }
         });

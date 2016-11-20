@@ -69,6 +69,22 @@
     <string name="registro_mecanico">Registro Mecanico</string>
     <string name="potencia">Potencia</string>
     <string name="_125_hp">125 hp</string>
+    <string name="transaccion">TRANSACCION</string>
+    <string name="comprador">Comprador</string>
+    <string name="jose_jose">Jose jose</string>
+    <string name="descuento">Descuento</string>
+    <string name="precio_total">precio total</string>
+    <string name="numero_de_importacion">numero de importacion</string>
+    <string name="caudal">caudal</string>
+    <string name="cochabamba">Cochabamba</string>
+    <string name="ciudad">Ciudad</string>
+    <string name="registro_transaccion">Registro transaccion</string>
+    <string name="registro_cliente">Registro Cliente</string>
+    <string name="fecha">Fecha</string>
+    <string name="diagnostico">Diagnostico</string>
+    <string name="rueda">Rueda</string>
+    <string name="registro_diagnostico_mecanico">Registro diagnostico mecanico</string>
+    <string name="comprar">COMPRAR</string>
 
     <string-array name="tipe_car">
         <item>@string/automovil</item>

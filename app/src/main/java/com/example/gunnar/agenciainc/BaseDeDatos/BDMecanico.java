@@ -29,11 +29,11 @@ public class BDMecanico extends SQLiteOpenHelper {
 
     //Setencia SQL para crear la base de datos
     private static final String DATABASE_CREATE = "CREATE TABLE "
-            + TABLE_MECANICO_IMPORTADORA + " (" + COLUMN_ID + " INT NOT NULL AUTOINCREMENT PRIMARY KEY, "
+            + TABLE_MECANICO_IMPORTADORA + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_NOMBRES + " TEXT NOT NULL, "
             + COLUMN_APELLIDOS + " TEXT NOT NULL, "
-            + COLUMN_CELULAR + " INT NOT NULL, "
-            + COLUMN_CI + " INT NOT NULL, "
+            + COLUMN_CELULAR + " INTEGER NOT NULL, "
+            + COLUMN_CI + " INTEGER NOT NULL, "
             + COLUMN_CHASIS + " TEXT NOT NULL, "
             + COLUMN_DIAGNOSTICO + " TEXT NOT NULL, "
             + COLUMN_FECHA + " TEXT NOT NULL);";

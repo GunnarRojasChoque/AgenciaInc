@@ -4,14 +4,12 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDTransaccion;
@@ -21,43 +19,32 @@ import com.example.gunnar.agenciainc.Transaccion;
 import java.util.Calendar;
 
 /**
- *
  * Created by Max on 10/11/2016.
  */
 
 public class MainTransaccion extends AppCompatActivity {
 
-    private static final String TAG = MainVehiculo.class.getSimpleName();
-
     //datos del formulario de transaccion
-    public static EditText comprador;
-    public static EditText vendedor;
-    public static EditText modelo;
-    public static EditText descuento;
-    public static EditText precioTotal;
-    public static EditText numeroImport;
-    public static Button fechaTra;
-    public static EditText ciudad;
+    EditText comprador;
+    EditText vendedor;
+    EditText modelo;
+    EditText descuento;
+    EditText precioTotal;
+    EditText numeroImport;
+    Button fechaTra;
+    EditText ciudad;
 
-    public static Button registroTra;
-    public static Button cancelarTra;
+    Button registroTra;
+    Button cancelarTra;
 
     public static int year, month, day;
 
     // Dialog Date.
     int id_dialog = 0;
+
     // BD transaccion.
     SQLiteDatabase database;
-    //para las imagenes
-    ImageView bitma;
-    public Bitmap bitmap;
-
-    public static TextView fechaNow;
-
-
-    private static final int REQUEST_CODE_ACTION_ADD_FROM_STORAGE = 0;
-    private static final int REQUEST_CODE_ACTION_ADD_FROM_CAMERA = 1;
-    private static final String BUNDLE_SAVED_BITMAPS = "bitmaps";
+    TextView fechaNow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,22 +66,21 @@ public class MainTransaccion extends AppCompatActivity {
     }
 
     private void initRegistrtoCli() {
-//
-//          comprador = (EditText) findViewById(R.id.comprador);
-//          vendedor = (EditText) findViewById(R.id.vendedor);
-//          modelo = (EditText) findViewById(R.id.modelo);
-//          descuento = (EditText) findViewById(R.id.descuento);
-//          precioTotal = (EditText) findViewById(R.id.precioTotal);
-//          numeroImport = (EditText) findViewById(R.id.numeroImport);
-//          fechaTra = (Button) findViewById(R.id.fechaTra);
-//          ciudad = (EditText) findViewById(R.id.ciudad);
-//
-//        registroTra = (Button) findViewById(R.id.registrarse);
-//        cancelarTra = (Button) findViewById(R.id.cancelar);
 
+        comprador = (EditText) findViewById(R.id.comprador);
+        vendedor = (EditText) findViewById(R.id.vendedor);
+        modelo = (EditText) findViewById(R.id.modeloT);
+        descuento = (EditText) findViewById(R.id.descuento);
+        precioTotal = (EditText) findViewById(R.id.precioTotal);
+        numeroImport = (EditText) findViewById(R.id.nroImportacion);
+        fechaTra = (Button) findViewById(R.id.fecha);
+        ciudad = (EditText) findViewById(R.id.ciudad);
 
-        MainTransaccion.fechaNow = (TextView) findViewById(R.id.tvfecha);
-        MainTransaccion.fechaNow.setText(year + "/" + month + "/" + day);
+        registroTra = (Button) findViewById(R.id.btnRegistrarT);
+        cancelarTra = (Button) findViewById(R.id.btnCancelarT);
+
+        fechaNow = (TextView) findViewById(R.id.tvfecha);
+        fechaNow.setText(year + "/" + month + "/" + day);
 
         fechaTra.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,32 +92,28 @@ public class MainTransaccion extends AppCompatActivity {
         registroTra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Cliente client = new Cliente(nombresCli.getText().toString(), apellidosCli.getText().toString(),
-                        Integer.valueOf(celularCli.getText().toString()), Integer.valueOf(ciCli.getText().toString()),
-                        fechaCli.getText().toString(), correoCli.getText().toString(), rb.getText().toString());
-                */
                 llenarTransaccion();
-
-
             }
         });
 
         cancelarTra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vendedor.setText("");
-                comprador.setText("");
-                modelo.setText("");
-                descuento.setText("");
-                precioTotal.setText("");
-                numeroImport.setText("");
-                ciudad.setText("");
-
+                onBackPressed();
             }
         });
 
     }
 
+    private void vaciar(){
+        vendedor.setText("");
+        comprador.setText("");
+        modelo.setText("");
+        descuento.setText("");
+        precioTotal.setText("");
+        numeroImport.setText("");
+        ciudad.setText("");
+    }
 
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -148,12 +130,12 @@ public class MainTransaccion extends AppCompatActivity {
             year = i;
             month = i1;
             day = i2;
-            MainVehiculo.fechaNow.setText(year + "/" + month + "/" + day);
+            fechaNow.setText(year + "/" + month + "/" + day);
         }
     };
 
-    private void llenarTransaccion(){
-        Transaccion transaccion = new Transaccion(comprador.getText().toString(),vendedor.getText().toString(),
+    private void llenarTransaccion() {
+        Transaccion transaccion = new Transaccion(comprador.getText().toString(), vendedor.getText().toString(),
                 modelo.getText().toString(), Integer.parseInt(descuento.getText().toString()),
                 Integer.parseInt(precioTotal.getText().toString()),
                 numeroImport.getText().toString(), ciudad.getText().toString());
@@ -161,10 +143,6 @@ public class MainTransaccion extends AppCompatActivity {
         //Base de Datos transaccion
         BDTransaccion bdTransaccion = new BDTransaccion(this);
         database = bdTransaccion.getWritableDatabase();
-         /*
-        BitmapConvert bitmapConvert = new BitmapConvert();
-        byte[] bytes;
-        bytes = bitmapConvert.getBytes(bitmap);*/
 
         ContentValues values = new ContentValues();
         values.put(BDTransaccion.COLUMN_COMPRADOR, transaccion.getComprador());

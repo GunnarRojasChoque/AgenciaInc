@@ -1,12 +1,16 @@
 package com.example.gunnar.agenciainc.FragmentsCatalogo;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gunnar.agenciainc.Mains.BitmapConvert;
+import com.example.gunnar.agenciainc.Mains.MainTransaccion;
 import com.example.gunnar.agenciainc.R;
 
 public class MainDetalleVehiculo extends AppCompatActivity {
@@ -20,14 +24,17 @@ public class MainDetalleVehiculo extends AppCompatActivity {
             caracteristicas;
     private ImageView imagen;
 
+    Button comprar;
+    Button cancelar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_detalle_vehiculo);
+
         initDetalle();
-
         llenardatos(savedInstanceState);
-
+        vender();
     }
 
     public void llenardatos(Bundle bundle){
@@ -71,6 +78,26 @@ public class MainDetalleVehiculo extends AppCompatActivity {
         precio=(TextView)findViewById(R.id.tvprecioV) ;
         caracteristicas=(TextView)findViewById(R.id.tvCaracteristicas);
         imagen=(ImageView)findViewById(R.id.ivImagen);
+    }
+
+    private void vender(){
+        comprar = (Button) findViewById(R.id.comprar);
+        cancelar = (Button) findViewById(R.id.cancelar);
+
+        comprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainTransaccion.class);
+                startActivity(intent);
+            }
+        });
+
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
 }

@@ -1,87 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="nombre_comprador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/comprador"
-        android:hint="@string/pedro_paco"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.gunnar.agenciainc.Mains.MainActivity">
 
-    <TextView
-        android:text="Nombre Vendedor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/registro_transaccion"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
 
-    <EditText
-        android:id="@id/vendedor"
-        android:hint="Juan Perez"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/comprador"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
 
-    <TextView
-        android:text="Modelo Vehiculo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/comprador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/pedro_paco" />
 
-    <TextView
-        android:id="@+id/modelo"
-        android:hint=" TOYOTA 4X4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/vendedor"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
 
-    <TextView
-        android:text="Descuento En Precio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/descuento"
-        android:hint="1000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/vendedor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/jose_jose" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/modelo"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/modeloT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/modelo_w450" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/descuento"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/descuento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/_2016"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/precio_total"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/precioTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/_2016"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/numero_de_importacion"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/nroImportacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/_453213"
+            android:inputType="number" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvnacimiento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/fecha_nacimiento"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tvfecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tvnacimiento" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/fecha"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/ciudad"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/ciudad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/cochabamba" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnCancelarT"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancelar"
+                android:textColor="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/btnRegistrarT"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/registrar"
+                android:textColor="@android:color/white"
+                tools:targetApi="lollipop" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 
-    <TextView
-        android:text="Precio Total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/precioTotal"
-        android:hint="6000"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:text="Numero De Importacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/numeroImport"
-        android:hint="12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:text="Ciudad "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/ciudad"
-        android:hint="Cochabamba"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
-
-
-</LinearLayout>
+</ScrollView>

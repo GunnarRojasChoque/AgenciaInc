@@ -2,6 +2,8 @@ package com.example.gunnar.agenciainc.Mains;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,22 +12,27 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.gunnar.agenciainc.BaseDeDatos.BDMecanico;
 import com.example.gunnar.agenciainc.R;
 
 import java.util.Calendar;
 
+import static com.example.gunnar.agenciainc.BaseDeDatos.BDMecanico.TABLE_MECANICO_IMPORTADORA;
+
 public class MainMecanico extends AppCompatActivity {
 
-    public static EditText nombresMec;
-    public static EditText apellidosMec;
-    public static EditText ciMec;
-    public static EditText celularMec;
-    public static Button registrarMec;
-    public static Button cancelarMec;
-    public static TextView fechaNow;
-    public static Button fech;
-    public static EditText diagnostico;
-    public static EditText chasis;
+    EditText nombresMec;
+    EditText apellidosMec;
+    EditText ciMec;
+    Button fecha;
+    TextView fechaShow;
+    EditText celularMec;
+    EditText chasis;
+    EditText diagnostico;
+
+    Button registrarMec;
+    Button cancelarMec;
+    SQLiteDatabase database;
     public static int year, month, day;
     public static final int id_dialog = 0;
 
@@ -50,47 +57,72 @@ public class MainMecanico extends AppCompatActivity {
 
         nombresMec = (EditText) findViewById(R.id.etnombres);
         apellidosMec = (EditText) findViewById(R.id.etapellidos);
+        ciMec = (EditText) findViewById(R.id.etci);
+        fechaShow = (TextView) findViewById(R.id.fechaDiagnostico);
+        celularMec = (EditText) findViewById(R.id.etcelular);
         chasis = (EditText) findViewById(R.id.chasis);
         diagnostico = (EditText) findViewById(R.id.etdiasnostico);
-        ciMec = (EditText) findViewById(R.id.etci);
-        fechaNow = (TextView) findViewById(R.id.dateNow);
-        celularMec = (EditText) findViewById(R.id.etcelular);
-        registrarMec = (Button) findViewById(R.id.btnregistrar);
+
+        fecha = (Button) findViewById(R.id.btnFecha);
         cancelarMec = (Button) findViewById(R.id.btncancelar);
+        registrarMec = (Button) findViewById(R.id.btnregistrar);
+
+        fechaShow.setText(year + "/" + month + "/" + day);
 
 
-        //fechaMec.setOnClickListener(new View.OnClickListener() {
-        //  @Override
-        //    public void onClick(View view) {
-        //      showDialog(id_dialog);
-        //}
-        //});
+        fecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(id_dialog);
+            }
+        });
 
 
-        //   registrarMec.setOnClickListener(new View.OnClickListener() {
-        //       @Override
-        //   public void onClick(View view) {
-        //         Mecanico mec = new Mecanico(nombresMec.getText().toString(), apellidosMec.getText().toString(),
-        //               Integer.valueOf(celularMec.getText().toString()), Integer.valueOf(ciMec.getText().toString()),
-        //                 );
-
-
-        //   }
-        //});
+        registrarMec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                llenarTransaccion();
+                vaciar();
+            }
+        });
 
 
         cancelarMec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nombresMec.setText("");
-                apellidosMec.setText("");
-                ciMec.setText("");
-
-                celularMec.setText("");
-
+                onBackPressed();
             }
         });
 
+    }
+
+    private void llenarTransaccion() {
+
+        //Base de Datos transaccion
+        BDMecanico bdMecanico = new BDMecanico(this);
+        database = bdMecanico.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(BDMecanico.COLUMN_NOMBRES, nombresMec.getText().toString());
+        values.put(BDMecanico.COLUMN_APELLIDOS, apellidosMec.getText().toString());
+        values.put(BDMecanico.COLUMN_CELULAR, Integer.parseInt(celularMec.getText().toString()));
+        values.put(BDMecanico.COLUMN_CI, Integer.parseInt(ciMec.getText().toString()));
+        values.put(BDMecanico.COLUMN_CHASIS, chasis.getText().toString());
+        values.put(BDMecanico.COLUMN_DIAGNOSTICO, diagnostico.getText().toString());
+        values.put(BDMecanico.COLUMN_FECHA, fechaShow.getText().toString());
+
+        long newRowId = database.insert(TABLE_MECANICO_IMPORTADORA, null, values);
+
+        //Log.i(TAG, "llenarBdTransaccion: id return " + newRowId);
+    }
+
+    private void vaciar(){
+        nombresMec.setText("");
+        apellidosMec.setText("");
+        ciMec.setText("");
+        celularMec.setText("");
+        chasis.setText("");
+        diagnostico.setText("");
     }
 
     @Override
@@ -108,6 +140,8 @@ public class MainMecanico extends AppCompatActivity {
             year = i;
             month = i1;
             day = i2;
+
+            fechaShow.setText(year + "/" + month + "/" + day);
         }
     };
 }
