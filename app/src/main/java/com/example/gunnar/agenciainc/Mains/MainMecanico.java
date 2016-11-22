@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ public class MainMecanico extends AppCompatActivity {
     Button registrarMec;
     Button cancelarMec;
     SQLiteDatabase database;
+    View view;
     public static int year, month, day;
     public static final int id_dialog = 0;
 
@@ -40,6 +42,7 @@ public class MainMecanico extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_mecanico);
+        view = findViewById(R.id.container);
 
         initCalendar();
         initRegistrtoMec();
@@ -51,6 +54,10 @@ public class MainMecanico extends AppCompatActivity {
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+    private void aviso() {
+        Snackbar.make(view, "Llene todos los campos.", Snackbar.LENGTH_LONG).setAction("Close", null).show();
     }
 
     private void initRegistrtoMec() {
@@ -116,7 +123,7 @@ public class MainMecanico extends AppCompatActivity {
         //Log.i(TAG, "llenarBdTransaccion: id return " + newRowId);
     }
 
-    private void vaciar(){
+    private void vaciar() {
         nombresMec.setText("");
         apellidosMec.setText("");
         ciMec.setText("");

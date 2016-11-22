@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,7 @@ public class MainTransaccion extends AppCompatActivity {
 
     // Dialog Date.
     int id_dialog = 0;
+    View view;
 
     // BD transaccion.
     SQLiteDatabase database;
@@ -50,10 +52,15 @@ public class MainTransaccion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_transaccion);
+        view = findViewById(R.id.container);
 
         initCalendar();
         initRegistrtoCli();
 
+    }
+
+    private void aviso() {
+        Snackbar.make(view, "Llene todos los campos.", Snackbar.LENGTH_LONG).setAction("Close", null).show();
     }
 
 
@@ -105,7 +112,7 @@ public class MainTransaccion extends AppCompatActivity {
 
     }
 
-    private void vaciar(){
+    private void vaciar() {
         vendedor.setText("");
         comprador.setText("");
         modelo.setText("");

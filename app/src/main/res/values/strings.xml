@@ -85,6 +85,8 @@
     <string name="rueda">Rueda</string>
     <string name="registro_diagnostico_mecanico">Registro diagnostico mecanico</string>
     <string name="comprar">COMPRAR</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="modeloValidador">Nombre de modelo invalido.</string>
 
     <string-array name="tipe_car">
         <item>@string/automovil</item>

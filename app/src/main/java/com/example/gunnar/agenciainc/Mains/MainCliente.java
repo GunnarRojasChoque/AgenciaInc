@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -39,14 +40,21 @@ public class MainCliente extends AppCompatActivity {
     public static final int id_dialog = 0;
     public static Context context;
 
+    View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_cliente);
+        view = findViewById(R.id.container);
 
         context = this;
         initCalendar();
         initRegistrtoCli();
+    }
+
+    private void aviso() {
+        Snackbar.make(view, "Llene todos los campos.", Snackbar.LENGTH_LONG).setAction("Close", null).show();
     }
 
     private void initCalendar() {
@@ -104,7 +112,7 @@ public class MainCliente extends AppCompatActivity {
 
     }
 
-    private void vaciar(){
+    private void vaciar() {
         nombresCli.setText("");
         apellidosCli.setText("");
         ciCli.setText("");

@@ -13,14 +13,22 @@ public class Vehiculo {
     private int año;
     private String fechaIngreso;
     private int precioIni;
+    private String potencia;
+    private String tipo;
+    private String caracteristicas;
+    private byte[] imagen;
 
-    public Vehiculo(String modelo, String marca, String chasis, int año, String fechaIngreso, int precioIni) {
+    public Vehiculo(String modelo, String marca, String chasis, int año, String fechaIngreso, int precioIni, String potencia, String tipo, String caracteristicas, byte[] imagen) {
         this.modelo = modelo;
         this.marca = marca;
         this.chasis = chasis;
         this.año = año;
         this.fechaIngreso = fechaIngreso;
         this.precioIni = precioIni;
+        this.potencia = potencia;
+        this.tipo = tipo;
+        this.caracteristicas = caracteristicas;
+        this.imagen = imagen;
     }
 
     public String getModelo() {
@@ -69,5 +77,37 @@ public class Vehiculo {
 
     public void setPrecioIni(int precioIni) {
         this.precioIni = precioIni;
+    }
+
+    public String getPotencia() {
+        return potencia;
+    }
+
+    public void setPotencia(String potencia) {
+        this.potencia = potencia;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
     }
 }

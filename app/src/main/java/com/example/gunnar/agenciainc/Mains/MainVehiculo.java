@@ -1,15 +1,18 @@
 package com.example.gunnar.agenciainc.Mains;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -25,6 +28,7 @@ import android.widget.TextView;
 import com.example.gunnar.agenciainc.BaseDeDatos.BDContrato;
 import com.example.gunnar.agenciainc.BaseDeDatos.BDVehiculo;
 import com.example.gunnar.agenciainc.R;
+import com.example.gunnar.agenciainc.Validador;
 import com.example.gunnar.agenciainc.Vehiculo;
 
 import java.io.IOException;
@@ -55,6 +59,7 @@ public class MainVehiculo extends AppCompatActivity {
 
     ImageView bitma;
     public Bitmap bitmap;
+    View view;
 
     public int year, month, day;
     // Dialog Date.
@@ -69,10 +74,11 @@ public class MainVehiculo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_vehiculo);
+        view = findViewById(R.id.container);
 
         initCalendar();
         initRegistro();
-       // MainDetalleVehiculo mdv=new MainDetalleVehiculo();
+        // MainDetalleVehiculo mdv=new MainDetalleVehiculo();
 
     }
 
@@ -118,7 +124,6 @@ public class MainVehiculo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 llenarBdVehiculo();
-                vaciar();
             }
         });
 
@@ -131,7 +136,7 @@ public class MainVehiculo extends AppCompatActivity {
         });
     }
 
-    private void vaciar(){
+    private void vaciar() {
         modelo.setText("");
         marca.setText("");
         chasis.setText("");
@@ -142,42 +147,145 @@ public class MainVehiculo extends AppCompatActivity {
         caracteristicas.setText("");
     }
 
-    private void llenarBdVehiculo(){
+    private void llenarBdVehiculo() {
         //Base de Datos Registro de vehiculo
         BDVehiculo bdVehiculo = new BDVehiculo(this);
         database = bdVehiculo.getWritableDatabase();
 
-        Vehiculo vehiculo = new Vehiculo(modelo.getText().toString(), marca.getText().toString(),
-                chasis.getText().toString(), Integer.parseInt(anio.getText().toString()),
-                fechaNow.getText().toString(), Integer.parseInt(precio.getText().toString()));
+        Vehiculo vehiculo = null;
 
-
-
-        BitmapConvert bitmapConvert = new BitmapConvert();
-        byte[] bytes;
-
+        byte[] bytes = null;
         int res = getID(tipo.getSelectedItemPosition() + 1);
-        Log.i(TAG, "llenarBdVehiculo: spinner pos" + res);
+//        Log.i(TAG, "llenarBdVehiculo: spinner pos" + res);
 
-        bytes = bitmapConvert.getBytes(bitmap);
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        boolean estado = true;
+        try {
+            bytes = BitmapConvert.getBytes(bitmap);
+        } catch (Exception e) {
+            estado = false;
+        }
 
 
-        ContentValues values = new ContentValues();
-        values.put(BDVehiculo.COLUMN_ID, res);
-        values.put(BDVehiculo.COLUMN_MODELO, vehiculo.getModelo());
-        values.put(BDVehiculo.COLUMN_MARCA, vehiculo.getMarca());
-        values.put(BDVehiculo.COLUMN_CHASIS, vehiculo.getChasis());
-        values.put(BDVehiculo.COLUMN_ANIO, vehiculo.getAño());
-        values.put(BDVehiculo.COLUMN_PRECIO, vehiculo.getPrecioIni());
-        values.put(BDVehiculo.COLUMN_POTENCIA, potencia.getText().toString());
-        values.put(BDVehiculo.COLUMN_FECHA, vehiculo.getFechaIngreso());
-        values.put(BDVehiculo.COLUMN_TIPO, tipo.getSelectedItem().toString());
-        values.put(BDVehiculo.COLUMN_CARACTERISTICAS, caracteristicas.getText().toString());
-        values.put(BDVehiculo.COLUMN_IMAGEN, bytes);
+        String vaModelo = modelo.getText().toString();
+        String vaMarca = marca.getText().toString();
+        String vaChasis = chasis.getText().toString();
+        String vaAio = anio.getText().toString();
+        String vaFecha = fechaNow.getText().toString();
+        String vaPrecio = precio.getText().toString();
+        String vaPotencia = potencia.getText().toString();
+        String vaTipo = tipo.getSelectedItem().toString();
+        String vaCaracteristicas = caracteristicas.getText().toString();
 
-        long newRowId = database.insert(BDVehiculo.TABLE_VEHICULO_IMPORTADORA, null, values);
+        if (vaModelo.length() == 0) {
+            aviso();
+        } else if (vaMarca.length() == 0) {
+            aviso();
+        } else if (vaChasis.length() == 0) {
+            aviso();
+        } else if (vaAio.length() == 0) {
+            aviso();
+        } else if (vaPrecio.length() == 0) {
+            aviso();
+        } else if (vaPotencia.length() == 0) {
+            aviso();
+        } else if (vaTipo.length() == 0) {
+            aviso();
+        } else if (vaCaracteristicas.length() == 0) {
+            aviso();
+        } else {
+            if (!Validador.modeloV(vaModelo)) {
+                alertDialog.setMessage("Nombre modelo no valido.");
+                alertDialog.setButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertDialog.show();
+                modelo.setText("");
+            } else if (!Validador.marcaV(vaMarca)) {
+                alertDialog.setMessage("Nombre de marca no valido.");
+                alertDialog.setButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertDialog.show();
+                marca.setText("");
+            } else if (!Validador.chasisV(vaChasis)) {
+                alertDialog.setMessage("Chasis no valido.");
+                alertDialog.setButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertDialog.show();
+                chasis.setText("");
+            } else if (!Validador.anioV(vaAio)) {
+                alertDialog.setMessage("Año no valido.");
+                alertDialog.setButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertDialog.show();
+                anio.setText("");
+            } else if (!Validador.precioV(vaPrecio)) {
+                alertDialog.setMessage("Precio no valido.");
+                alertDialog.setButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertDialog.show();
+                precio.setText("");
+            } else if (!estado) {
+                alertDialog.setMessage("Por favor seleccione una Imagen o tome una fotografia.");
+                alertDialog.setButton(getString(R.string.aceptar), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertDialog.show();
 
-        Log.i(TAG, "llenarBdVehiculo: id return " + newRowId);
+            } else {
+
+                vehiculo = new Vehiculo(vaModelo, vaMarca, vaChasis, Integer.parseInt(vaAio), fechaNow.getText().toString(),
+                        Integer.parseInt(vaPrecio), vaPotencia, vaTipo,
+                        vaCaracteristicas, bytes);
+
+                ContentValues values = new ContentValues();
+                values.put(BDVehiculo.COLUMN_ID, res);
+                values.put(BDVehiculo.COLUMN_MODELO, vehiculo.getModelo());
+                values.put(BDVehiculo.COLUMN_MARCA, vehiculo.getMarca());
+                values.put(BDVehiculo.COLUMN_CHASIS, vehiculo.getChasis());
+                values.put(BDVehiculo.COLUMN_ANIO, vehiculo.getAño());
+                values.put(BDVehiculo.COLUMN_PRECIO, vehiculo.getPrecioIni());
+                values.put(BDVehiculo.COLUMN_POTENCIA, vehiculo.getPotencia());
+                values.put(BDVehiculo.COLUMN_FECHA, vehiculo.getFechaIngreso());
+                values.put(BDVehiculo.COLUMN_TIPO, vehiculo.getTipo());
+                values.put(BDVehiculo.COLUMN_CARACTERISTICAS, vehiculo.getCaracteristicas());
+                values.put(BDVehiculo.COLUMN_IMAGEN, bytes);
+
+                long newRowId = database.insert(BDVehiculo.TABLE_VEHICULO_IMPORTADORA, null, values);
+
+                Log.i(TAG, "llenarBdVehiculo: id return " + newRowId);
+                vaciar();
+            }
+        }
+
+
+    }
+
+    private void aviso() {
+        Snackbar.make(view, "Llene todos los campos.", Snackbar.LENGTH_LONG).setAction("Close", null).show();
     }
 
     @Override
@@ -199,7 +307,7 @@ public class MainVehiculo extends AppCompatActivity {
         }
     };
 
-    private int getID(int posItem){
+    private int getID(int posItem) {
         switch (posItem) {
             case 1:
                 return sizeBD(getString(R.string.automovil));
@@ -291,8 +399,8 @@ public class MainVehiculo extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
-    private void llenarDatosContrato()
-    {
+
+    private void llenarDatosContrato() {
         ContentValues values = new ContentValues();
         values.put(BDContrato.COLUMN_APELLIDO, "");
         values.put(BDContrato.COLUMN_CARGO, "");
