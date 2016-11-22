@@ -3,6 +3,7 @@ package com.example.gunnar.agenciainc.Mains;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -12,9 +13,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.content.Context;
+import android.app.AlertDialog;
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDMecanico;
 import com.example.gunnar.agenciainc.R;
+import com.example.gunnar.agenciainc.Validador;
 
 import java.util.Calendar;
 
@@ -22,21 +26,22 @@ import static com.example.gunnar.agenciainc.BaseDeDatos.BDMecanico.TABLE_MECANIC
 
 public class MainMecanico extends AppCompatActivity {
 
-    EditText nombresMec;
-    EditText apellidosMec;
-    EditText ciMec;
-    Button fecha;
-    TextView fechaShow;
-    EditText celularMec;
-    EditText chasis;
-    EditText diagnostico;
+    public static EditText nombresMec;
+    public static EditText apellidosMec;
+    public static EditText ciMec;
+    public static Button fecha;
+    public static TextView fechaShow;
+    public static EditText celularMec;
+    public static EditText chasis;
+    public static EditText diagnostico;
 
-    Button registrarMec;
-    Button cancelarMec;
-    SQLiteDatabase database;
-    View view;
+    public static Button registrarMec;
+    public static Button cancelarMec;
     public static int year, month, day;
     public static final int id_dialog = 0;
+    public static Context context;
+    SQLiteDatabase database;
+    View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class MainMecanico extends AppCompatActivity {
         setContentView(R.layout.registro_mecanico);
         view = findViewById(R.id.container);
 
+        context = this;
         initCalendar();
         initRegistrtoMec();
     }
@@ -88,19 +94,86 @@ public class MainMecanico extends AppCompatActivity {
         registrarMec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                llenarTransaccion();
+                String nombres = nombresMec.getText().toString();
+                String apellidos = apellidosMec.getText().toString();
+                String ci = ciMec.getText().toString();
+                String celular =  celularMec.getText().toString();
+                String chas = chasis.getText().toString();
+                    if(estaLleno()) {
+                        if(Validador.nombreV(nombres)){
+                            if(Validador.apellidoV(apellidos)){
+                                if(Validador.ciV(ci)){
+                                    if(Validador.celularV(celular)){
+                                        if(Validador.chasisV(chas)){
+                                            llenarTransaccion();
+                                            vaciar();
+                                            exito();
+                                        }else{chasis.setText(""); error("CHASIS");}
+                                    }else{celularMec.setText(""); error("CELULAR");}
+                                }else{ciMec.setText(""); error("CI");}
+                            }else{apellidosMec.setText(""); error("APELLIDOS");}
+                        }else{nombresMec.setText(""); error("NOMBRES");}
+                    }else {
+                        AlertDialog alerta = new AlertDialog.Builder(context).create();
+                        alerta.setMessage("TODOS LOS CAMPOS DEBEN SER LLENADOS.");
+                        alerta.setButton("ACEPTAR", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                return;
+                            }
+                        });
+
+                        alerta.show();
+                    }
+            }
+        });
+        cancelarMec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //onBackPressed();
                 vaciar();
             }
         });
 
+    }
+    public boolean estaLleno(){
+        boolean lleno = true;
+        if((nombresMec.getText().toString().equalsIgnoreCase(""))||
+                (apellidosMec.getText().toString().equalsIgnoreCase(""))||
+                (ciMec.getText().toString().equalsIgnoreCase(""))||
+                (celularMec.getText().toString().equalsIgnoreCase(""))||
+                (chasis.getText().toString().equalsIgnoreCase(""))){
+            lleno = false;
+        }
+        return lleno;
 
-        cancelarMec.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
+    }
+    public void exito(){
+        AlertDialog alerta = new AlertDialog.Builder(context).create();
+        alerta.setMessage("REGISTRO EXITOSO.");
+        alerta.setButton("ACEPTAR", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+
+                return;
+
             }
         });
+        alerta.show();
+    }
+    public void error(String campo){
+        AlertDialog alerta = new AlertDialog.Builder(context).create();
+        alerta.setMessage("CAMPO " + campo + " ES INVALIDO");
+        alerta.setButton("ACEPTAR", new DialogInterface.OnClickListener() {
 
+            public void onClick(DialogInterface dialog, int which) {
+
+                return;
+
+            }
+        });
+        alerta.show();
     }
 
     private void llenarTransaccion() {
@@ -126,8 +199,8 @@ public class MainMecanico extends AppCompatActivity {
     private void vaciar() {
         nombresMec.setText("");
         apellidosMec.setText("");
-        ciMec.setText("");
         celularMec.setText("");
+        ciMec.setText("");
         chasis.setText("");
         diagnostico.setText("");
     }
