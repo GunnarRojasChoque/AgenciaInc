@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -15,10 +16,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.app.AlertDialog;
+//import android.app.Dia
 
 import com.example.gunnar.agenciainc.BaseDeDatos.BDCliente;
 import com.example.gunnar.agenciainc.Cliente;
 import com.example.gunnar.agenciainc.R;
+import com.example.gunnar.agenciainc.Validador;
 
 import java.util.Calendar;
 
@@ -51,6 +55,8 @@ public class MainCliente extends AppCompatActivity {
         context = this;
         initCalendar();
         initRegistrtoCli();
+
+        generoMasCli.setChecked(true);
     }
 
     private void aviso() {
@@ -97,18 +103,99 @@ public class MainCliente extends AppCompatActivity {
         registrarCli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                llenarCliente();
-                vaciar();
+                String correo= correoCli.getText().toString();
+                String nombre=nombresCli.getText().toString();
+                String apellido=apellidosCli.getText().toString();
+                String ci=ciCli.getText().toString();
+                String celular=celularCli.getText().toString();
+                   if(estaLleno()){
+
+                           if(Validador.nombreV(nombre)){
+                                if(Validador.apellidoV(apellido)){
+                                    if(Validador.ciV(ci)){
+                                        if(Validador.correoV(correo)){
+                                            if(Validador.celularV(celular)){
+                                                llenarCliente();
+                                                vaciar();
+                                                exito();
+                                            }else{celularCli.setText("");error("CELULAR");}
+                                        }else{correoCli.setText("");error("CORREO");  }
+                                    }else{ciCli.setText("");error("CI");  }
+                                }else {apellidosCli.setText(""); error("APELLIDO"); }
+                           }else{nombresCli.setText(""); error("NOMBRE");}
+
+                   }else{
+
+                       AlertDialog alerta = new AlertDialog.Builder(context).create(); //Aqui me marca el siguiente error The constructor AlertDialog.Builder(new View.OnClickListener(){}) is undefined
+                        alerta.setMessage("TODOS LOS CAMPOS DEBEN SER LLENADOS.");
+                        alerta.setButton("ACEPTAR", new DialogInterface.OnClickListener() {
+
+                           public void onClick(DialogInterface dialog, int which) {
+
+                               return;
+                           }
+                       });
+
+                       alerta.show();
+                   }
             }
         });
-
-
         cancelarCli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 vaciar();
             }
         });
+
+    }
+    public boolean estaLleno(){
+        boolean llenado=true;
+        if((nombresCli.getText().toString().equalsIgnoreCase(""))||
+                (apellidosCli.getText().toString().equalsIgnoreCase(""))||
+                (ciCli.getText().toString().equalsIgnoreCase(""))||
+                //(fechaCli.getText().toString().equalsIgnoreCase(""))||
+                (correoCli.getText().toString().equalsIgnoreCase(""))||
+                        (celularCli.getText().toString().equalsIgnoreCase(""))){
+
+            llenado=false;
+        }
+        return llenado;
+
+    }
+    public void exito(){
+        AlertDialog alerta = new AlertDialog.Builder(context).create(); //Aqui me marca el siguiente error The constructor AlertDialog.Builder(new View.OnClickListener(){}) is undefined
+        alerta.setMessage("EL REGISTRO FUE EXITOSO.");
+
+        alerta.setButton("ACEPTAR", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+
+                return;
+
+            }
+        });
+
+        alerta.show();
+
+    }
+    public void error(String campo){
+
+        AlertDialog alerta = new AlertDialog.Builder(context).create(); //Aqui me marca el siguiente error The constructor AlertDialog.Builder(new View.OnClickListener(){}) is undefined
+
+        //alerta.setTitle("Alert");
+
+        alerta.setMessage("EL CAMPO "+campo+" ES INVALIDO");
+
+        alerta.setButton("ACEPTAR", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+
+                return;
+
+            }
+        });
+
+        alerta.show();
 
     }
 
@@ -141,6 +228,10 @@ public class MainCliente extends AppCompatActivity {
     };
 
     public void llenarCliente() {
+        /*
+        String cad = "s";
+        boolean res = Validador.placaV(cad);
+        */
 
         Cliente client = new Cliente(nombresCli.getText().toString(), apellidosCli.getText().toString(),
                 Integer.valueOf(celularCli.getText().toString()), Integer.valueOf(ciCli.getText().toString()),
